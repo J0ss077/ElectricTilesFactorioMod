@@ -1,6 +1,8 @@
 require("scripts.functions.settings-loader")
 
---------------------------------------------
+require("scripts.functions.distress-vars-loader")
+
+-------------------------------------------------
 
 local on_mined_tile_fun = require("scripts.handlers.on-mined-tile")
 

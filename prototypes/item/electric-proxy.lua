@@ -18,7 +18,7 @@ local base_item = {
 
     flags = { "not-stackable", "only-in-cursor" },
 
-    icon = "__electric-tiles__/graphics/icons/electric-proxy.png",
+    icon = "__electric-tiles__/graphics/icon/electric-proxy.png",
 
     icon_size = 64,
 }
