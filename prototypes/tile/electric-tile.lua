@@ -28,7 +28,7 @@ data:extend({
 
         collision_mask = { layers = { ground_tile = true } },
 
-        minable = { mining_time = 0.25, results = { { type = "item", name = "electric-tile", amount = 1 } } },
+        minable = { mining_time = 0.10, results = { { type = "item", name = "electric-tile", amount = 1 } } },
 
         --// VISUALS SECTION
 
@@ -144,17 +144,17 @@ data:extend({
 
                 variations = {
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-large-1.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/large/build-electric-tile-large-1.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-large-2.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/large/build-electric-tile-large-2.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-large-3.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/large/build-electric-tile-large-3.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-large-4.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/large/build-electric-tile-large-4.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-large-5.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/large/build-electric-tile-large-5.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-large-6.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/large/build-electric-tile-large-6.ogg", volume = 0.5 },
                 }
             },
 
@@ -162,17 +162,17 @@ data:extend({
 
                 variations = {
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-medium-1.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/medium/build-electric-tile-medium-1.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-medium-2.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/medium/build-electric-tile-medium-2.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-medium-3.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/medium/build-electric-tile-medium-3.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-medium-4.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/medium/build-electric-tile-medium-4.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-medium-5.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/medium/build-electric-tile-medium-5.ogg", volume = 0.5 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-medium-6.ogg", volume = 0.5 },
+                    { filename = "__electric-tiles__/sounds/building/medium/build-electric-tile-medium-6.ogg", volume = 0.5 },
                 }
             },
 
@@ -180,17 +180,17 @@ data:extend({
 
                 variations = {
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-small-1.ogg", volume = 0.4 },
+                    { filename = "__electric-tiles__/sounds/building/small/build-electric-tile-small-1.ogg", volume = 0.4 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-small-2.ogg", volume = 0.4 },
+                    { filename = "__electric-tiles__/sounds/building/small/build-electric-tile-small-2.ogg", volume = 0.4 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-small-3.ogg", volume = 0.4 },
+                    { filename = "__electric-tiles__/sounds/building/small/build-electric-tile-small-3.ogg", volume = 0.4 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-small-4.ogg", volume = 0.4 },
+                    { filename = "__electric-tiles__/sounds/building/small/build-electric-tile-small-4.ogg", volume = 0.4 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-small-5.ogg", volume = 0.4 },
+                    { filename = "__electric-tiles__/sounds/building/small/build-electric-tile-small-5.ogg", volume = 0.4 },
 
-                    { filename = "__electric-tiles__/sounds/build-electric-tile-small-6.ogg", volume = 0.4 },
+                    { filename = "__electric-tiles__/sounds/building/small/build-electric-tile-small-6.ogg", volume = 0.4 },
                 }
             }
         },
@@ -199,7 +199,7 @@ data:extend({
 
             aggregation = { count_already_playing = true, max_count = 2, remove = true },
 
-            variations = { { filename = "__electric-tiles__/sounds/deconstruct-electric-tile.ogg", volume = 0.8 } }
+            variations = { { filename = "__electric-tiles__/sounds/mining/deconstruct-electric-tile.ogg", volume = 0.8 } }
         }
     }
 })
