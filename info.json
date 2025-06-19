@@ -1,11 +1,14 @@
 {
   "name": "electric-tiles",
+
   "title": "Electric Tiles",
 
   "description": "Special copper-made tiles that can induce electric currents.",
 
   "factorio_version": "2.0",
+
   "author": "Factory077",
+
   "version": "1.1.0",
 
   "dependencies": ["base >= 2.0.0"]
