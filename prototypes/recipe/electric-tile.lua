@@ -1,3 +1,11 @@
+local recipe_category = "assembling"
+
+if mods["space-age"] then
+    --
+    recipe_category = "metallurgy-or-assembling"
+    --
+end
+
 data:extend({
     {
         type = "recipe",
@@ -10,7 +18,7 @@ data:extend({
 
         name = "electric-tile",
 
-        category = "metallurgy-or-assembling",
+        category = recipe_category,
 
         ingredients = {
 
