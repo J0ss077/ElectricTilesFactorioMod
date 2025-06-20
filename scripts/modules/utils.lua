@@ -114,13 +114,51 @@ function module.restartUpdateTimer()
     --
 end
 
-function module.cacheTilePosition(position)
+function module.cacheTile(position, surface, force, add, rem)
     --
+    local add_mode = add or false
+
+    local rem_mode = rem or false
+
+    if add_mode == rem_mode then return false end
+
+    ---------------------------------------------
+
+    local cache_info = { mode = 0, surface = surface, force = force }
+
+    -----------------------------------------------------------------
+
+    if temps.get("cached-tiles")[position.x] == nil then temps.get("cached-tiles")[position.x] = {} end
+
+    ---------------------------------------------------------------------------------------------------
+
+    local target = temps.get("cached-tiles")[position.x][position.y]
+
+    if target == nil then
+        --
+        if add_mode then cache_info.mode = 01 end
+
+        if rem_mode then cache_info.mode = -1 end
+
+        temps.get("cached-tiles")[position.x][position.y] = cache_info
+        --
+    elseif target.mode > 0 and rem_mode == true then
+        --
+        temps.get("cached-tiles")[position.x][position.y] = nil
+        --
+    elseif target.mode < 0 and add_mode == true then
+        --
+        temps.get("cached-tiles")[position.x][position.y] = nil
+        --
+    end
+
+    return true
     --
 end
 
-function module.uncacheTilePosition(position)
+function module.resetTileCache()
     --
+    temps.set("cached-tiles", {})
     --
 end
 
