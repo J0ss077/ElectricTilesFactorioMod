@@ -10,7 +10,7 @@ end
 
 function module.getWorldChunkFromWorldPosition(position)
     --
-    return { x = math.floor(position.x / 32), y = math.floor(position.y / 32) }
+    return { x = math.floor(position.x / temps.get("chunk-area-size")), y = math.floor(position.y / temps.get("chunk-area-size")) }
     --
 end
 
