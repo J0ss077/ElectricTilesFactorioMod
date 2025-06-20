@@ -1,5 +1,7 @@
 local cover_matrix_with_squares_fun = require("scripts.functions.cover-matrix-with-squares")
 
+local update_electric_pole_fun = require("scripts.functions.update-electric-pole")
+
 local utils = require("scripts.modules.utils")
 
 local temps = require("scripts.modules.temps")
@@ -61,10 +63,12 @@ return function()
                     local chunk_tiles_matrix = utils.generateEmptyBinarySquareMatrix(chunk_area_size)
 
                     local chunk_world_bounds = {
+
                         {
                             chunk_area_size * chunk_x,
                             chunk_area_size * chunk_y,
                         },
+
                         {
                             chunk_area_size * chunk_x + chunk_area_size,
                             chunk_area_size * chunk_y + chunk_area_size,
@@ -87,7 +91,7 @@ return function()
 
                     }) do
                         --
-                        chunk_tiles_matrix[tile.position.x - chunk_world_bounds[1][1] + 1][tile.position.y - chunk_world_bounds[1][2] + 1] = true
+                        chunk_tiles_matrix[tile.position.x - chunk_world_bounds[1][1] + 1][tile.position.y - chunk_world_bounds[1][2] + 1] = 1
                         --
                     end
 
@@ -124,10 +128,12 @@ return function()
                                 name = temps.get("proxies-names"), force = force_name,
 
                                 area = {
+
                                     {
                                         proxy_world_position.x - chunk_area_size - 0.25,
                                         proxy_world_position.y - chunk_area_size - 0.25,
                                     },
+
                                     {
                                         proxy_world_position.x + chunk_area_size + 0.25,
                                         proxy_world_position.y + chunk_area_size + 0.25,
@@ -162,6 +168,26 @@ return function()
                         end
                         --
                     end
+
+                    for _001_, pole in ipairs(surface_content.surface.find_entities_filtered {
+
+                        type = "electric-pole", force = force_name, -- almost the same area !!
+
+                        area = {
+
+                            {
+                                chunk_area_size * chunk_x - 00.25,
+                                chunk_area_size * chunk_y - 00.25,
+                            },
+
+                            {
+                                chunk_area_size * chunk_x + chunk_area_size + 0.25,
+                                chunk_area_size * chunk_y + chunk_area_size + 0.25,
+                            },
+                        }
+
+                    }) do update_electric_pole_fun(pole) end
+                    --
                     --
                 end
                 --
