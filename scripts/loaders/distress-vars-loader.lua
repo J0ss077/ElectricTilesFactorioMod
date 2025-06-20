@@ -10,7 +10,7 @@ temps.set("forced-timer", { enabled = false, tick = 0 })
 
 --// 2nd : Aux collision box
 
-temps.set("aux-collision-box", { left_top = { x = 0, y = 0 }, right_bottom = { x = 0, y = 0 } })
+temps.set("aux-collision-box", { left_top = { x = -0.25, y = -0.25 }, right_bottom = { x = 0.25, y = 0.25 } })
 
 --// 3rd : All proxies names
 

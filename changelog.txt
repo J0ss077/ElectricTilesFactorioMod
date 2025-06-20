@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.2
+  Bugfixes:
+    - Added better edge case for placing poles without valid collision box.
+  Locale:
+    - Added spanish traslation.
+    - Added russian traslation.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.1
   Info:
     - Thumbnail changed.
