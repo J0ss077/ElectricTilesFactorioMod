@@ -24,15 +24,15 @@ local setting002 = settings.startup["electric-tiles-update-delay"].value
 
 if setting002 == "1 second" then
     --
-    temps.set("update-delay", 1.00)
+    temps.set("update-delay", 60)
     --
 elseif setting002 == "0.75 seconds" then
     --
-    temps.set("update-delay", 0.75)
+    temps.set("update-delay", 45)
     --
 elseif setting002 == "0.50 seconds" then
     --
-    temps.set("update-delay", 0.50)
+    temps.set("update-delay", 30)
     --
 end
 
