@@ -1,6 +1,6 @@
 --// FIRST PHASE
 
-require("scripts.functions.settings-loader")
+require("scripts.loaders.settings-loader")
 
 --// SECONDS PHASE
 

@@ -1,4 +1,4 @@
-require("scripts.functions.settings-loader")
+require("scripts.loaders.settings-loader")
 
 local utils = require("scripts.modules.utils")
 

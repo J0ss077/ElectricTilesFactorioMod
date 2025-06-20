@@ -1,8 +1,10 @@
-require("scripts.functions.settings-loader")
+require("scripts.loaders.settings-loader")
 
-require("scripts.functions.distress-vars-loader")
+require("scripts.loaders.distress-vars-loader")
 
--------------------------------------------------
+-----------------------------------------------
+
+local on_tick_fun = require("scripts.handlers.on-tick")
 
 local on_mined_tile_fun = require("scripts.handlers.on-mined-tile")
 
@@ -11,6 +13,10 @@ local on_built_tile_fun = require("scripts.handlers.on-built-tile")
 local on_built_entity_fun = require("scripts.handlers.on-built-entity")
 
 -----------------------------------------------------------------------
+
+script.on_event(defines.events.on_tick, function(data) on_tick_fun(data.tick) end)
+
+----------------------------------------------------------------------------------
 
 script.on_event(defines.events.on_built_entity,       function(data) on_built_entity_fun(data.entity) end, { { filter = "type", type = "electric-pole" } })
 
