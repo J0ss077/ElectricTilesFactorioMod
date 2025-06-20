@@ -151,6 +151,8 @@ return function()
 
                             } -- spawned proxy reference
 
+                            proxy.destructible = false
+
                             for _002_, close_proxy in ipairs(utils.getPolesOnContactToPoleLikeArea(proxy.position, square_size / 2, close_proxies)) do
                                 --
                                 local target_connector = close_proxy.get_wire_connector(defines.wire_connector_id.pole_copper)

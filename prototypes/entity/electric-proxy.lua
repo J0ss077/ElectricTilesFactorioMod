@@ -6,13 +6,13 @@ local base_proxy = {
 
     type = "electric-pole",
 
-    hide_resistances = true,
-
     maximum_wire_distance = 0,
 
     draw_copper_wires = false,
 
     draw_circuit_wires = false,
+
+    remove_decoratives = "false",
 
     create_ghost_on_death = false,
 
@@ -21,6 +21,8 @@ local base_proxy = {
     collision_mask = { layers = {} },
 
     protected_from_tile_building = false,
+
+    rewire_neighbours_when_destroying = false,
 
     flags = { "not-blueprintable", "not-on-map", "placeable-off-grid" },
 

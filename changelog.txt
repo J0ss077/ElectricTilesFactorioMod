@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.3
+  Info:
+    - Minimal fixes and upgrades.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.2
   Bugfixes:
     - Added better edge case for placing poles without valid collision box.
@@ -25,7 +29,3 @@ Version: 1.1.0
     - Added timer for delaying chunk processing (now mainly robot swarms will cause less lag).
     - Added forced timer for preventing too long update delays (robot swarms won't delay too much).
     - Added config option for chunk subdivision (now only a fraction could be processed).
----------------------------------------------------------------------------------------------------
-Version: 1.0.0
-  Info:
-    - Initial Release.
