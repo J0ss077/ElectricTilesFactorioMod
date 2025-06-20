@@ -2,9 +2,11 @@ local utils = require("scripts.modules.utils")
 
 local temps = require("scripts.modules.temps")
 
---// 1st : Timer for updating the cached tiles
+--// 1st : Timers for updating the cached tiles
 
 temps.set("update-timer", { enabled = false, tick = 0 })
+
+temps.set("forced-timer", { enabled = false, tick = 0 })
 
 --// 2nd : Aux collision box
 
@@ -21,3 +23,7 @@ for i = 0.5, temps.get("chunk-area-size") / 2, 0.5 do
 end
 
 temps.set("proxies-names", _names_)
+
+--// 4th : Cache storage for tiles
+
+temps.set("cached-tiles", {})

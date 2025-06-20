@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+  Info:
+    - Changelog added.
+  Changes:
+    - Mod description updated.
+    - Mod forum description updated.
+  Graphics:
+    - Mod in-game icons updated.
+  Balancing:
+    - Item cost of electric tiles reduced.
+    - Technology cost greatly reduced.
+  Optimisations:
+    - Added timer for delaying chunk processing (now mainly robot swarms will cause less lag).
+    - Added forced timer for preventing too long update delays (robot swarms won't delay too much).
+    - Added config option for chunk subdivision (now only a fraction could be processed).
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+  Info:
+    - Initial Release.

@@ -1,3 +1,5 @@
+local temps = require("scripts.modules.temps")
+
 local module = {}
 
 function module.getProxyNameFromSupplyDistance(distance)
@@ -29,6 +31,95 @@ function module.generateEmptyBinarySquareMatrix(size)
 end
 
 function module.getPolesOnContactToPoleLikeArea(world_position, range, pole_entities)
+    --
+    local valid_poles = {}
+
+    for __, pole in ipairs(pole_entities) do
+        --
+        local lock = true
+
+        local expected_distance = range + pole.prototype.get_supply_area_distance()
+
+        if expected_distance < math.abs(world_position.x - pole.position.x) then lock = false end
+
+        if expected_distance < math.abs(world_position.y - pole.position.y) then lock = false end
+
+        if lock then table.insert(valid_poles, pole) end
+        --
+    end
+
+    return valid_poles
+    --
+end
+
+function module.countDownUpdateTimer()
+    --
+    if temps.get("update-timer").enabled == false then return false end
+
+    local forced_predicted_tick = temps.get("forced-timer").tick - 1
+
+    local normal_predicted_tick = temps.get("update-timer").tick - 1
+
+    if normal_predicted_tick > 0 and forced_predicted_tick > 0 then
+        --
+        temps.get("forced-timer").tick = forced_predicted_tick
+
+        temps.get("update-timer").tick = normal_predicted_tick
+
+        return false
+        --
+    else
+        --
+        temps.get("update-timer").enabled = false
+
+        temps.get("forced-timer").enabled = false
+
+        temps.get("update-timer").tick = 0
+
+        temps.get("forced-timer").tick = 0
+
+        if normal_predicted_tick < 0 or forced_predicted_tick < 0 then
+            --
+            game.print("[electric-tiles-mod][WARNING]: The timer countdown went negatives! Fixing timer ...")
+
+            return false
+            --
+        else
+            --
+            return true
+            --
+        end
+        --
+    end
+    --
+end
+
+function module.restartUpdateTimer()
+    --
+    if temps.get("update-timer").enabled == false then -- timer stopped
+        --
+        temps.get("update-timer").enabled = true
+
+        temps.get("forced-timer").enabled = true
+
+        temps.get("update-timer").tick = temps.get("update-delay") * 01
+
+        temps.get("forced-timer").tick = temps.get("update-delay") * 10
+        --
+    else -- timer already running
+        --
+        temps.get("update-timer").tick = temps.get("update-delay")
+        --
+    end
+    --
+end
+
+function module.cacheTilePosition(position)
+    --
+    --
+end
+
+function module.uncacheTilePosition(position)
     --
     --
 end
