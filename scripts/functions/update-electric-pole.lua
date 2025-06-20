@@ -58,9 +58,11 @@ return function(entity)
 
     if #close_proxies == 0 then return end
 
-    ---------------------------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------
 
-    for __, close_proxy in ipairs(utils.getPolesOnContactToPoleLikeArea(entity.position, prototype.get_supply_area_distance(), close_proxies)) do
+    local radius = math.abs(math.floor(aux_collision_box.left_top.x)) - 0.25
+
+    for __, close_proxy in ipairs(utils.getPolesOnContactToPoleLikeArea(entity.position, radius, close_proxies)) do
         --
         local origin = entity.get_wire_connector(defines.wire_connector_id.pole_copper)
 
