@@ -1,4 +1,4 @@
-local recipe_category = "assembling"
+local recipe_category = "advanced-crafting"
 
 if mods["space-age"] then
     --
