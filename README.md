@@ -54,7 +54,7 @@ In order to start "adapting" a new tile variant, you need to pass to the functio
 ElectricTilesDataInterface.adaptTilePrototype({
     {
         tile       = {}, -- [REQUIRED] EXACTLY the same data required for creating a Tile Prototype
-        item       = {}, -- [REQUIRED] EXACTLY the same data required for creating an Item Prototype
+        item       = {}, -- [OPTIONAL] EXACTLY the same data required for creating an Item Prototype
         recipe     = {}, -- [OPTIONAL] EXACTLY the same data required for creating Recipe Prototype
         others     = {}, -- [OPTIONAL] special values for the interface to consider while processing
         technology = {}, -- [OPTIONAL] array of tech names for unlocking the variant
@@ -75,7 +75,7 @@ ElectricTilesDataInterface.adaptTilePrototype({
 - Electric Tiles will **overwrite** certain properties _(which means that you **don't have control** over these values)_:
 
   - _name_ (special name with prefix)
-  - _minable.result_ (item returned on removal)
+  - _minable.result_ (item returned on removal, **if** item-data was passed)
   - _localised_name_ (special in-game label name)
 
 - Electric Tiles will **modify** certain properties _(which means that you **have partial control** over the final values)_:
@@ -106,6 +106,7 @@ ElectricTilesDataInterface.adaptTilePrototype({
 
   - _type_ (default: "recipe")
   - _enabled_ (default: false)
+  - _auto_recycle_ (default: false)
   - _category_ (default: "advanced-crafting")
   - _ingredients_ (default: { 1 x IronStick, 1 x CopperCable, 1 x Tile } )
 
@@ -120,7 +121,8 @@ ElectricTilesDataInterface.adaptTilePrototype({
 
 - These are some special parameters that change how the adapter works:
 
-  - _add_copper_wire_icon_ (boolean) (If **false**, the copper wire icon will NOT be added)
+  - _add_copper_wire_icon_ (boolean) (If **false**, the copper wire icon will **NOT** be added)
+  - _use_default_recipe_ (boolean) (If **true**, the default recipe will be added **if** no recipe-data was passed)
 
 #### **# technology** _(table: StringArray)_
 
