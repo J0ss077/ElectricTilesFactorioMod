@@ -74,7 +74,7 @@ local recipe_001 = {
         --
     },
     --
-    localised_name = { "", "(", { "item-name.__upper_case_upgrade__" }, " ", { "item-name.__upper_case_electric__" }, ") ", { "item-name.stone-brick" } }
+    localised_name = { "", "(", { "item-name.__upper_case_upgrade__" }, " ", { "item-name.__lower_case_electric__" }, ") ", { "item-name.stone-brick" } }
     --
 }
 
@@ -110,7 +110,7 @@ local recipe_002 = {
         --
     },
     --
-    localised_name = { "", "(", { "item-name.__upper_case_upgrade__" }, " ", { "item-name.__upper_case_electric__" }, ") ", { "item-name.concrete" } }
+    localised_name = { "", "(", { "item-name.__upper_case_upgrade__" }, " ", { "item-name.__lower_case_electric__" }, ") ", { "item-name.concrete" } }
     --
 }
 

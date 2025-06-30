@@ -8,8 +8,6 @@ Date: 29-06-2025
     - Correctly handling of proxy creation (now other mods can detect their creation).
   Changes:
     - Electric proxys names changued (prefix added).
-  Modding:
-    - Now only the tile prototype's data is required for creating an electric variant.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.3
 Date: 26-06-2025
