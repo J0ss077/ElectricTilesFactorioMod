@@ -1,0 +1,63 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.2.4
+Date: 29-06-2025
+  Info:
+    - Removed unused codes/folders.
+    - Added recipes for upgrading tiles.
+    - Added remote function to recalculate all surfaces.
+    - Correctly handling of proxy creation (now other mods can detect their creation).
+  Changes:
+    - Electric proxys names changued (prefix added).
+  Modding:
+    - Now only the tile prototype's data is required for creating an electric variant.
+---------------------------------------------------------------------------------------------------
+Version: 1.2.3
+Date: 26-06-2025
+  Info:
+    - Modding documentation completed (github).
+  Changes:
+    - Prefixes changed.
+---------------------------------------------------------------------------------------------------
+Version: 1.2.2
+Date: 26-06-2025
+  Bugfixes:
+    - Added the capacity to detect other mods building/removing tiles.
+  Modding:
+    - Modding interface now works correctly (documentation almost ready).
+---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 25-06-2025
+  Info:
+    - Minimal restructuration of code.
+    - Surfaces recalculation on setting change.
+  Changes:
+    - Chunk-Subdivision setting moved to runtime-global.
+    - Update-Delay setting moved to runtime-global.
+  Locale:
+    - Added missing configuration locales.
+  Balancing:
+    - Reduced science cost and electric tiles items' cost.
+  Bugfixes:
+    - Fixed items' icons.
+    - Handling of settings' changes.
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 24-06-2025
+  Info:
+    - Thumbnail changued.
+    - Total refactoring of the mod code.
+    - Electric tiles energy zones now are visible.
+    - Adding custom variants of tiles now is possible.
+    - Migrations added, you can properly switch from version <= 1.1.5
+  Locale:
+    - Removed russian traslation (more testings are required, english and spanish are currently supported properly).
+  Optimizations:
+    - Better caching of tiles.
+    - Better handling of arrays/tables.
+  Balancing:
+    - Increased science cost and added red-science in it.
+  Bugfixes:
+    - Electric tiles connections now are fully invisible.
+    - Fixed on-init event, now the mod loads properly for new saves.
+  Modding:
+    - Added remote interfaces for both mod cycles: data-stage and runtime-stage (documentation about is still on work).

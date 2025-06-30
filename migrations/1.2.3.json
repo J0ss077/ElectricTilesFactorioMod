@@ -1,0 +1,12 @@
+{
+  "tile": [
+    ["F077-electric-refined-concrete", "F077ET-refined-concrete"],
+    ["F077-electric-stone-path", "F077ET-stone-path"],
+    ["F077-electric-concrete", "F077ET-concrete"]
+  ],
+  "item": [
+    ["F077-electric-refined-concrete", "F077ET-refined-concrete"],
+    ["F077-electric-stone-brick", "F077ET-stone-brick"],
+    ["F077-electric-concrete", "F077ET-concrete"]
+  ]
+}
