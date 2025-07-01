@@ -4,6 +4,6 @@
   "description": "Adds conductive floor tiles that transmit power to adjacent tiles (including diagonals) and any structure on top of them, just place a power source or electric pole on top and enjoy the extra space!",
   "factorio_version": "2.0",
   "author": "Factory077",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "dependencies": ["base >= 2.0.55"]
 }

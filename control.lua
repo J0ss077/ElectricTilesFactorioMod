@@ -4,6 +4,8 @@ require("scripts.loaders.temporals-loader")()
 
 require("control-interface")
 
+require("console")
+
 local on_built_tile = require("scripts.handlers.on-built-tile")
 
 local on_mined_tile = require("scripts.handlers.on-mined-tile")

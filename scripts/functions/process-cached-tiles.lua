@@ -139,7 +139,7 @@ return function(_data_)
 
                         local proxy = current_surface.create_entity {
 
-                            raise_built = true, -- other mods will be able to catch this
+                            raise_built = true, force = "neutral",
 
                             name = utilities.getProxyNameFromSupplyDistance(square_size / 2),
 

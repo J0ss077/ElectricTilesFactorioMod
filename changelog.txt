@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.5
+Date: 30-06-2025
+  Info:
+    - Added in-game console command: "F077ET-recalculateAllSurfaces"
+  Changes:
+    - Electric proxys force assigned to neutral.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.4
 Date: 29-06-2025
   Info:
