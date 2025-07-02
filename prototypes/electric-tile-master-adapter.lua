@@ -44,13 +44,15 @@ local default_recipe = {
     --
     enabled = false,
     --
-    auto_recycle = false,
+    auto_recycle = true,
     --
     category = "advanced-crafting"
     --
 }
 
 local default_others = {
+    --
+    result_amount = 1,
     --
     use_default_recipe = false,
     --
@@ -116,7 +118,13 @@ return function(_meta_)
 
         new_item_prototype.place_as_tile.result = new_tile_prototype.name
 
+        -----------------------------------------------------------
+
         new_tile_prototype.minable.result = new_item_prototype.name
+
+        new_tile_prototype.placeable_by = { count = 1, item = new_item_prototype.name }
+
+        -------------------------------------------------------------------------------
 
         local icons = {}
 
@@ -184,7 +192,7 @@ return function(_meta_)
 
             new_recipe_prototype.name = new_item_prototype.name
 
-            new_recipe_prototype.results = { { type = "item", name = new_item_prototype.name, amount = 1 } }
+            new_recipe_prototype.results = { { type = "item", name = new_item_prototype.name, amount = other_data.result_amount } }
 
             new_recipe_prototype.ingredients = new_recipe_prototype.ingredients or {
                 --

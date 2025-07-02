@@ -34,9 +34,13 @@ end
 
 --- @param message string
 ---
-function module.debugInGame(message)
+--- @param ignore? boolean
+---
+function module.debugInGame(message, ignore)
     --
-    if not temporals.get("debug-mode") then return end
+    local overwrite = ignore or false
+
+    if not temporals.get("debug-mode") and not overwrite then return end
 
     game.print("[electric-tiles]: " .. message)
     --
@@ -103,6 +107,20 @@ function module.arrayHasValue(_table_, target)
     end
 
     return false
+    --
+end
+
+--- @param target_table table
+---
+--- @param copied_table table
+---
+function module.concatArrayTables(target_table, copied_table)
+    --
+    for i = 1, #copied_table do
+        --
+        target_table[#target_table + 1] = copied_table[i]
+        --
+    end
     --
 end
 

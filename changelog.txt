@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.6
+Date: 02-07-2025
+  Info:
+    - Minimal restructuration of codes.
+    - Re-added optional dependency for Space Age.
+    - Added chat warnings and messages for various things.
+    - Added hazard variations.
+  Changes:
+    - Upgrade recipes in-game names and icons changed.
+  Bugfixes:
+    - Aquilo tiles fixed.
+    - Fixed grid not updating in tile replacement with not electric variant.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.5
 Date: 30-06-2025
   Info:

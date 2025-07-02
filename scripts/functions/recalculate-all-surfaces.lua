@@ -10,7 +10,7 @@ local custom_definitions = require("definitions")
 
 return function(_data_)
     --
-    utilities.debugInGame("Recalculating all surfaces ...")
+    utilities.debugInGame("Recalculating all surfaces ...", true)
 
     for surface_name, surface_reference in pairs(game.surfaces) do
         --
@@ -21,6 +21,8 @@ return function(_data_)
         end
         --
     end
+    --
+    utilities.debugInGame("Surfaces recalculation completed.", true)
     --
     update_timer.restart()
     --

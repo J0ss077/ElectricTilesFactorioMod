@@ -76,6 +76,7 @@ ElectricTilesDataInterface.adaptTilePrototype({
 
   - _name_ (special name with prefix)
   - _minable.result_ (item returned on removal, **if** item-data was passed)
+  - _placeable_by_ (item that places this tile, **if** item-data was passed)
   - _localised_name_ (special in-game label name)
 
 - Electric Tiles will **modify** certain properties _(which means that you **have partial control** over the final values)_:
@@ -106,7 +107,7 @@ ElectricTilesDataInterface.adaptTilePrototype({
 
   - _type_ (default: "recipe")
   - _enabled_ (default: false)
-  - _auto_recycle_ (default: false)
+  - _auto_recycle_ (default: true)
   - _category_ (default: "advanced-crafting")
   - _ingredients_ (default: { 1 x IronStick, 1 x CopperCable, 1 x Tile } )
 
@@ -122,11 +123,12 @@ ElectricTilesDataInterface.adaptTilePrototype({
 - These are some special parameters that change how the adapter works:
 
   - _add_copper_wire_icon_ (boolean) (If **false**, the copper wire icon will **NOT** be added)
-  - _use_default_recipe_ (boolean) (If **true**, the default recipe will be added **if** no recipe-data was passed)
+  - _result_amount_ (integer) (default: 1) (practically the amount of tiles crafted by this recipe)
+  - _use_default_recipe_ (boolean) (If **true**, the default recipe will be used **if** no recipe-data was passed)
 
 #### **# technology** _(table: StringArray)_
 
-- These are the technologies that unlock this special electric variant.
+- These are the technologies that unlock this special electric variant, **if** a recipe is created and is not enabled.
 
 ## Stage 1: Example
 
