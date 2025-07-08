@@ -74,13 +74,13 @@ return function(_meta_)
         --
     end
 
-    new_tile_prototype.localised_name = { "", { "tile-name." .. _data_.tile.name }, " (", { "item-name.__upper_case_electric__" }, ")" }
+    new_tile_prototype.localised_name = new_tile_prototype.localised_name or { "tile-name." .. _data_.tile.name }
+
+    new_tile_prototype.localised_name = { "", new_tile_prototype.localised_name, " (", { "item-name.__upper_case_electric__" }, ")" }
+
+    new_tile_prototype.name = custom_definitions.tile_prefix .. new_tile_prototype.name
 
     new_tile_prototype.order = new_tile_prototype.order .. "-z[electric-variant]"
-
-    new_tile_prototype.name = custom_definitions.tile_prefix .. _data_.tile.name
-
-    new_tile_prototype.layer = new_tile_prototype.layer + 64
 
     data:extend({ new_tile_prototype })
 
@@ -110,11 +110,13 @@ return function(_meta_)
             --
         end
 
-        new_item_prototype.localised_name = { "", { "item-name." .. _data_.item.name }, " (", { "item-name.__upper_case_electric__" }, ")" }
+        new_item_prototype.localised_name = new_item_prototype.localised_name or { "item-name." .. _data_.item.name }
+
+        new_item_prototype.localised_name = { "", new_item_prototype.localised_name, " (", { "item-name.__upper_case_electric__" }, ")" }
+
+        new_item_prototype.name = custom_definitions.item_prefix .. new_item_prototype.name
 
         new_item_prototype.order = new_item_prototype.order .. "-z[electric-variant]"
-
-        new_item_prototype.name = custom_definitions.item_prefix .. _data_.item.name
 
         new_item_prototype.place_as_tile.result = new_tile_prototype.name
 

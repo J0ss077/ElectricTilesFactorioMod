@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.7
+Date: 07-07-2025
+  Info:
+    - Documentation updated.
+    - Improved processing of tiles (13%).
+    - Added warning message for config options related to chunk processing.
+  Changes:
+    - Modding interface now won't modify layer of tiles.
+  Bugfixes:
+    - Fixed Aquilo's tiles localised names.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.6
 Date: 02-07-2025
   Info:

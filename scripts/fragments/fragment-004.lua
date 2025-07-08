@@ -36,6 +36,8 @@ for __, pairs in ipairs(names) do
 
     frozen_tile_duplicate.placeable_by = { count = 1, item = electric_tile_item_name }
 
+    frozen_tile_duplicate.layer = frozen_tile_duplicate.layer + 64
+
     frozen_tile_duplicate.minable.result = electric_tile_item_name
 
     frozen_tile_duplicate.thawed_variant = electric_tile_reference.name

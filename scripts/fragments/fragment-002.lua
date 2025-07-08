@@ -4,13 +4,17 @@ local custom_definitions = require("definitions")
 
 --- STONE PATH/BRICK
 
-local tile_reference_stone_path = data.raw.tile["stone-path"]
+local tile_duplicate_stone_path = table.deepcopy(data.raw.tile["stone-path"])
+
+tile_duplicate_stone_path.layer = tile_duplicate_stone_path.layer + 64
 
 local item_reference_stone_brick = data.raw.item["stone-brick"]
 
 --- CONCRETE
 
-local tile_reference_concrete = data.raw.tile["concrete"]
+local tile_duplicate_concrete = table.deepcopy(data.raw.tile["concrete"])
+
+tile_duplicate_concrete.layer = tile_duplicate_concrete.layer + 64
 
 local item_reference_concrete = data.raw.item["concrete"]
 
@@ -22,7 +26,13 @@ local hazard_concrete_item_name = custom_definitions.item_prefix .. "hazard-conc
 
 local tile_duplicate_hazard_concrete_left = table.deepcopy(data.raw.tile["hazard-concrete-left"])
 
+tile_duplicate_hazard_concrete_left.layer = tile_duplicate_hazard_concrete_left.layer + 64
+
 local tile_duplicate_hazard_concrete_right = table.deepcopy(data.raw.tile["hazard-concrete-right"])
+
+tile_duplicate_hazard_concrete_right.layer = tile_duplicate_hazard_concrete_right.layer + 64
+
+--------------------------------------------------------------------------------------------------------------
 
 tile_duplicate_hazard_concrete_left.next_direction = custom_definitions.tile_prefix .. "hazard-concrete-right"
 
@@ -48,7 +58,9 @@ local hazard_concrete_recipe = {
 
 --- REFINED CONCRETE
 
-local tile_reference_refined_concrete = data.raw.tile["refined-concrete"]
+local tile_duplicate_refined_concrete = table.deepcopy(data.raw.tile["refined-concrete"])
+
+tile_duplicate_refined_concrete.layer = tile_duplicate_refined_concrete.layer + 64
 
 local item_reference_refined_concrete = data.raw.item["refined-concrete"]
 
@@ -60,7 +72,13 @@ local refined_hazard_concrete_item_name = custom_definitions.item_prefix .. "ref
 
 local tile_duplicate_refined_hazard_concrete_left = table.deepcopy(data.raw.tile["refined-hazard-concrete-left"])
 
+tile_duplicate_refined_hazard_concrete_left.layer = tile_duplicate_refined_hazard_concrete_left.layer + 64
+
 local tile_duplicate_refined_hazard_concrete_right = table.deepcopy(data.raw.tile["refined-hazard-concrete-right"])
+
+tile_duplicate_refined_hazard_concrete_right.layer = tile_duplicate_refined_hazard_concrete_right.layer + 64
+
+------------------------------------------------------------------------------------------------------------------------------
 
 tile_duplicate_refined_hazard_concrete_left.next_direction = custom_definitions.tile_prefix .. "refined-hazard-concrete-right"
 
@@ -88,15 +106,15 @@ local refined_hazard_concrete_recipe = {
 
 ElectricTilesDataInterface.adaptTilePrototype({
     --
-    { tile = tile_reference_stone_path,                   item = item_reference_stone_brick,             others = { use_default_recipe = true } },
+    { tile = tile_duplicate_stone_path,                   item = item_reference_stone_brick,             others = { use_default_recipe = true } },
     --
-    { tile = tile_reference_concrete,                     item = item_reference_concrete,                others = { use_default_recipe = true } },
+    { tile = tile_duplicate_concrete,                     item = item_reference_concrete,                others = { use_default_recipe = true } },
     --
     { tile = tile_duplicate_hazard_concrete_left,         item = item_reference_hazard_concrete,         others = { result_amount = 10 },       recipe = hazard_concrete_recipe },
     --
     { tile = tile_duplicate_hazard_concrete_right },
     --
-    { tile = tile_reference_refined_concrete,             item = item_reference_refined_concrete,        others = { use_default_recipe = true } },
+    { tile = tile_duplicate_refined_concrete,             item = item_reference_refined_concrete,        others = { use_default_recipe = true } },
     --
     { tile = tile_duplicate_refined_hazard_concrete_left, item = item_reference_refined_hazard_concrete, others = { result_amount = 10 },       recipe = refined_hazard_concrete_recipe },
     --

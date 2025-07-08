@@ -105,7 +105,9 @@ return function(_data_)
                     --
                 end
 
-                --------------------------------------------------------
+                --------------------------
+
+                local spawned_proxies = {}
 
                 for square_x, square_column in pairs(minimal_squares) do
                     --
@@ -118,24 +120,6 @@ return function(_data_)
                             y = (square_y / 2) + chunk_world_bounds[1][2] - 1,
 
                         } -- real world positioning for the new proxy
-
-                        local close_proxies = current_surface.find_entities_filtered {
-
-                            name = temporals.get("proxies-names"),
-
-                            area = {
-                                {
-                                    proxy_world_position.x - chunk_area_size - 0.25,
-
-                                    proxy_world_position.y - chunk_area_size - 0.25,
-                                },
-                                {
-                                    proxy_world_position.x + chunk_area_size + 0.25,
-
-                                    proxy_world_position.y + chunk_area_size + 0.25,
-                                },
-                            },
-                        }
 
                         local proxy = current_surface.create_entity {
 
@@ -151,19 +135,7 @@ return function(_data_)
                             --
                             proxy.destructible = false
 
-                            for _01_, close_proxy in ipairs(utilities.getPolesOnContactToPoleLikeArea(proxy.position, square_size / 2, close_proxies)) do
-                                --
-                                local target_connector = close_proxy.get_wire_connector(defines.wire_connector_id.pole_copper, false)
-
-                                local origin_connector = proxy.get_wire_connector(defines.wire_connector_id.pole_copper, false)
-
-                                if origin_connector.is_connected_to(target_connector) == false then
-                                    --
-                                    origin_connector.connect_to(target_connector, false) -- connect
-                                    --
-                                end
-                                --
-                            end
+                            table.insert(spawned_proxies, proxy)
                             --
                         else
                             --
@@ -174,6 +146,56 @@ return function(_data_)
                     end
                     --
                 end
+
+                --------------------------------------------------------------
+
+                local close_proxies = current_surface.find_entities_filtered {
+
+                    name = temporals.get("proxies-names"),
+
+                    area = {
+                        {
+                            chunk_area_size * chunk_x - (chunk_area_size * 0.5) - 0.25,
+
+                            chunk_area_size * chunk_y - (chunk_area_size * 0.5) - 0.25,
+                        },
+                        {
+                            chunk_area_size * chunk_x + (chunk_area_size * 1.5) + 0.25,
+
+                            chunk_area_size * chunk_y + (chunk_area_size * 1.5) + 0.25,
+                        },
+                    },
+                }
+
+                -----------------------------------------------------
+
+                for _01_, spawned_proxy in ipairs(spawned_proxies) do
+                    --
+                    local pos = spawned_proxy.position --- world position of proxy
+
+                    local ran = spawned_proxy.prototype.get_supply_area_distance()
+
+                    for _02_, close_proxy in ipairs(utilities.getPolesOnContactToPoleLikeArea(pos, ran, close_proxies)) do
+                        --
+                        if spawned_proxy ~= close_proxy then
+                            --
+                            local target_connector = close_proxy.get_wire_connector(defines.wire_connector_id.pole_copper, false)
+
+                            local origin_connector = spawned_proxy.get_wire_connector(defines.wire_connector_id.pole_copper, false)
+
+                            if origin_connector.is_connected_to(target_connector) == false then
+                                --
+                                origin_connector.connect_to(target_connector, false) -- connect
+                                --
+                            end
+                            --
+                        end
+                        --
+                    end
+                    --
+                end
+
+                -----------------------------------------------------------------
 
                 for _01_, pole in ipairs(current_surface.find_entities_filtered {
 

@@ -71,17 +71,18 @@ ElectricTilesDataInterface.adaptTilePrototype({
   - _type_ (default: "tile")
   - _order_ (default: "a[base]")
   - _minable_ (default: Basic _MinableStructure_)
+  - _localised_name_ (default: exactly the same as your locals files say...)
 
 - Electric Tiles will **overwrite** certain properties _(which means that you **don't have control** over these values)_:
 
-  - _name_ (special name with prefix)
   - _minable.result_ (item returned on removal, **if** item-data was passed)
   - _placeable_by_ (item that places this tile, **if** item-data was passed)
-  - _localised_name_ (special in-game label name)
 
 - Electric Tiles will **modify** certain properties _(which means that you **have partial control** over the final values)_:
-  - _layer_ (+64 will be added)
+
+  - _name_ (a prefix will be added)
   - _order_ (a postfix will be added)
+  - _localised_name_ (a postfix will be added)
 
 #### **# item** _(table: ItemPrototype)_
 
@@ -90,16 +91,18 @@ ElectricTilesDataInterface.adaptTilePrototype({
   - _type_ (default: "item")
   - _order_ (default: "a[base]")
   - _place_as_tile_ (default: Basic _PlaceAsTileStructure_)
+  - _localised_name_ (default: exactly the same as your locals files say...)
 
 - Electric Tiles will **overwrite** certain properties:
 
-  - _name_ (special name with prefix)
   - _place_as_tile.result_ (tile placed on built)
-  - _localised_name_ (special in-game label name)
 
 - Electric Tiles will **modify** certain properties:
+
+  - _name_ (a prefix will be added)
   - _icon(s)_ (the copper-wire icon will be added)
   - _order_ (a postfix will be added)
+  - _localised_name_ (a postfix will be added)
 
 #### **# recipe** _(table: RecipePrototype)_
 
