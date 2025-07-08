@@ -79,15 +79,11 @@ return function(_data_)
 
                 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-                for _01_, tile in ipairs(current_surface.find_tiles_filtered {
-                    --
-                    name = temporals.get("array-allowed-tiles"), area = chunk_world_bounds
-                    --
-                }) do -- formatts all tile positions inside a binary matrix for later use in another process
-                    --
-                    chunk_tiles_matrix[tile.position.x - chunk_world_bounds[1][1] + 1][tile.position.y - chunk_world_bounds[1][2] + 1] = 1
-                    --
-                end
+                for _01_, tile in ipairs(utilities.customFindTilesFiltered(current_surface,
+
+                    { name = temporals.get("array-allowed-tiles"), area = chunk_world_bounds }, { deep_search = true }
+
+                )) do chunk_tiles_matrix[tile.position.x - chunk_world_bounds[1][1] + 1][tile.position.y - chunk_world_bounds[1][2] + 1] = 1 end
 
                 --------------------------
 

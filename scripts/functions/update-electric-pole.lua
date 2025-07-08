@@ -35,11 +35,17 @@ return function(entity) --- poles
         },
     }
 
-    --------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------
 
-    local tiles = entity.surface.find_tiles_filtered { name = temporals.get("array-allowed-tiles"), area = tiling_area }
+    local tiles = utilities.customFindTilesFiltered(entity.surface,
 
-    --------------------------------------------------------------------------------------------------------------------
+        { name = temporals.get("array-allowed-tiles"), area = tiling_area },
+
+        { deep_search = true }
+
+    ) -- custom implementation
+
+    ----------------------------
 
     if #tiles == 0 then return end
 

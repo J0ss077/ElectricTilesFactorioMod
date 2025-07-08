@@ -144,6 +144,95 @@ function module.generateEmptyBinarySquareMatrix(size)
     --
 end
 
+--- @param default any?
+---
+--- @param array any
+---
+--- @return table
+---
+function module.convertArrayToDictionary(array, default)
+    --
+    local temp = (type(array) == "table") and array or { array }
+
+    ----------------------------
+
+    local dict, value = {}, true
+
+    if default ~= nil then value = default end
+
+    ------------------------------------------
+
+    for __, element in ipairs(temp) do dict[element] = value end
+
+    return dict
+    --
+end
+
+--- @param extras table?
+---
+--- @param surface LuaSurface
+---
+--- @param filter TileSearchFilters
+---
+--- @return (table|LuaTile)[]
+---
+function module.customFindTilesFiltered(surface, filter, extras)
+    --
+    local filter = filter or {}
+
+    local extras = extras or {}
+
+    local tiles = surface.find_tiles_filtered(filter)
+
+    -------------------------------------------------
+
+    if extras.deep_search then
+        --
+        local names = module.convertArrayToDictionary(filter.name or {})
+
+        ----------------------------------------------------------------
+
+        local hidding_tiles = surface.find_tiles_filtered {
+
+            position = filter.position or nil,
+
+            radius = filter.radius or nil,
+
+            area = filter.area or nil,
+
+            has_hidden_tile = true
+        }
+
+        for __, hidding_tile in ipairs(hidding_tiles) do
+            --
+            if not names[hidding_tile.name] then
+                --
+                local double_hidden_name = hidding_tile.double_hidden_tile
+
+                local single_hidden_name = hidding_tile.hidden_tile
+
+                if
+                --
+                    (single_hidden_name and names[single_hidden_name]) or
+                    --
+                    (double_hidden_name and names[double_hidden_name])
+                --
+                then
+                    --
+                    table.insert(tiles, { position = hidding_tile.position })
+                    --
+                end
+                --
+            end
+            --
+        end
+        --
+    end
+
+    return tiles
+    --
+end
+
 --- @param world_position MapPosition
 ---
 --- @param range number
