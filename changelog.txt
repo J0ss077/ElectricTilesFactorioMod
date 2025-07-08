@@ -1,9 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.7
-Date: 07-07-2025
+Date: 08-07-2025
   Info:
     - Documentation updated.
     - Improved processing of tiles (13%).
+    - "Foundations" based tiles now supported.
     - Added warning message for config options related to chunk processing.
   Changes:
     - Modding interface now won't modify layer of tiles.
