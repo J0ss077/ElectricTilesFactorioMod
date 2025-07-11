@@ -37,7 +37,7 @@ With the release of the version **1.2.2**, Electric Tiles is now able to "adapt"
 
 1. Add an optional dependency for Electric Tiles >= 1.2.2
 2. Correctly call the _Data Stage Interface_ for creating the tiles.
-3. Correctly call the *Runtime Stage Interfac*e for registering the tiles.
+3. Correctly call the *Runtime Stage Interface* for registering the tiles.
 
 ## Stage 1: Data Stage (data.lua)
 
