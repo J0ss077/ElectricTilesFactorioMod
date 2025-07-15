@@ -1,41 +1,49 @@
---- (RUNTIME) REGISTER TILES' PROTOTYPES
+--- (RUNTIME) ON BUILT/MINED TILE HANDLER
 
-local utilities = require("scripts.modules.utilities")
+local data_carrier = prototypes.mod_data["F077ET-data-carrier"]
 
-return function(_data_)
+local update_timer = require("scripts.objects.update-timer")
+
+local tiles_cache = require("scripts.objects.tile-cache")
+
+local custom_definitions = require("definitions")
+
+-------------------------------------------------
+
+return function(surface_name, old_tiles, tile_prototype)
     --
-    local names = {
+    local locks = false
+
+    local build = false
+
+    if tile_prototype and data_carrier.data["allowed-tiles"][tile_prototype.name] then build = true end
+
+    ---------------------------------------------------------------------------------------------------
+
+    for __, old_tile_data in ipairs(old_tiles) do
         --
-        "stone-path",
-        --
-        "concrete",
-        --
-        "hazard-concrete-left",
-        --
-        "hazard-concrete-right",
-        --
-        "refined-concrete",
-        --
-        "refined-hazard-concrete-left",
-        --
-        "refined-hazard-concrete-right",
-        --
-    }
-    --
-    if script.active_mods["space-age"] then
-        --
-        local new_names = {}
-        --
-        for __, name in ipairs(names) do
+        local operation = nil
+
+        if build then --- build operation will always be more important than mining
             --
-            table.insert(new_names, "frozen-" .. name)
+            operation = custom_definitions.tiling_cache_operation.building
+            --
+        elseif data_carrier.data["allowed-tiles"][old_tile_data.old_tile.name] then
+            --
+            operation = custom_definitions.tiling_cache_operation.mining
+            --
+        end
+
+        if operation then
+            --
+            tiles_cache.cache_tile(surface_name, old_tile_data.position, operation)
+
+            if not locks then locks = true end
             --
         end
         --
-        utilities.concatArrayTables(names, new_names)
-        --
     end
-    --
-    remote.call("ElectricTilesControlInterface", "registerTilePrototype", names)
+
+    if locks then update_timer.restart() end
     --
 end

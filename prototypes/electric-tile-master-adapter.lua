@@ -1,6 +1,6 @@
 local custom_definitions = require("definitions")
 
---local carrier = data.raw["mod-data"]["F077ET-data-carrier"]
+local carrier = data.raw["mod-data"]["F077ET-data-carrier"]
 
 local copper_wire_icon = "__electric-tiles__/graphics/icons/copper-wire.png"
 
@@ -230,7 +230,7 @@ return function(_meta_)
 
     -- SAVE PHASE (FINAL)
 
-    --carrier.data["allowed-tiles"][new_tile_prototype.name] = true
+    carrier.data["allowed-tiles"][new_tile_prototype.name] = true
 
     return true
     --

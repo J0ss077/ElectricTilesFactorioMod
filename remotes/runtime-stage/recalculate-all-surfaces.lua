@@ -4,6 +4,6 @@ return function(_data_)
     --
     recalculate_all_surfaces_fun(_data_)
 
-    return true
+    return true -- works like a sub-mask
     --
 end

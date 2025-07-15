@@ -1,7 +1,7 @@
-local fragmnt_005 = require("scripts.fragments.fragment-005")
+local fragmnt_001 = require("scripts.fragments.fragment-001")
 
 return function(surface_name, old_tiles)
     --
-    fragmnt_005(surface_name, old_tiles)
+    fragmnt_001(surface_name, old_tiles)
     --
 end

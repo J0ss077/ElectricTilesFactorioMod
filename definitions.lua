@@ -1,8 +1,8 @@
 return {
 
-    data_interface_version = "1.0.2",
+    data_interface_version = "1.0.4",
 
-    control_interface_version = "1.0.2",
+    control_interface_version = "1.0.4",
 
     item_prefix = "F077ET-",
 
