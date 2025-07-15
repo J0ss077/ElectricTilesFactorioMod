@@ -1,6 +1,6 @@
 # Electric Tiles
 
-A new and optimized version of _Powered Floor Extended_! Adds conductive floor tiles that transmit power to adjacent tiles (including diagonals) and any structure on top of them. Just place a power source or electric pole and enjoy the extra space!
+A new and optimized version of _Powered Floor Extended_! Adds conductive floor tiles that transmit power to adjacent tiles (including diagonals) and any structure on top of them. Just place a power source or electric pole on top and enjoy the extra space!
 
 **[BEWARE]**: Due to technical limitations, placing a huge number of tiles (+5K aprox) pretty fast WILL cause large UPS spikes for a few seconds.
 
@@ -23,7 +23,7 @@ Electric Tiles form an **invisible power grid** under your base:
 
 ### Known Issues / To-Do
 
-- Nothing for now ...
+- Mods that rewire electric poles are likely to cause troubles with the invisible electric grids.
 
 ### Feedback Welcome
 
@@ -33,13 +33,14 @@ This is my **first official mod**, so any suggestions, feedback, or improvement 
 
 With the release of the version **1.2.2**, Electric Tiles is now able to "adapt" other tiles and process them internally. If you are a modder, keep reading for learning how to create electric variants of many tiles. For prototyping references/properties/functions visit the **official Factorio API page**.
 
+**[NOTE]:** Electric Tiles **1.2.8** runtime-stage modding process has been deprecated, due to new Factorio **2.0.60** prototypes. Please consider this for possible compatibilities with your mods.
+
 ### Requeriments
 
-1. Add an optional dependency for Electric Tiles >= 1.2.2
-2. Correctly call the _Data Stage Interface_ for creating the tiles.
-3. Correctly call the *Runtime Stage Interface* for registering the tiles.
+1. Add an optional dependency for Electric Tiles >= 1.2.8
+2. Correctly call the **Data Stage Interface** for creating the tiles.
 
-## Stage 1: Data Stage (data.lua)
+## Data Stage (data.lua)
 
 During Factorio's Data-Stage, this mod will create a global table: **ElectricTilesDataInterface**. This table will contain special methods:
 
@@ -133,7 +134,7 @@ ElectricTilesDataInterface.adaptTilePrototype({
 
 - These are the technologies that unlock this special electric variant, **if** a recipe is created and is not enabled.
 
-## Stage 1: Example
+## Data Stage (Example)
 
 In this code example we are creating an electric variant for the mod **"Space Platform, for ground"**, by Snouz.
 
@@ -155,43 +156,6 @@ ElectricTilesDataInterface.adaptTilePrototype({
 })
 ```
 
-## Stage 2: Runtime Stage (control.lua)
-
-During Factorio's Runtime-Stage, this mod will create a remote interface: **ElectricTilesControlInterface**. This remote will contain special methods:
-
-- registerTilePrototype(): Main method for registering electric tiles' variants.
-- getItemPrefix(): Get item prefix added to the name of all tiles' items.
-- getTilePrefix(): Get tile prefix added to the name of each tile variant.
-- getInterfaceVersion(): Obtain the interface current version.
-
-In order to start "registering" an existing tile variant, you need to pass to the function **registerTilePrototype()** the BASE prototypes' names of the tiles that you created, **WHILE** inside of a handler for the events _on_init_ and _on_load_:
-
-```lua
-local names = { "space-platform-for-ground" }
-
-remote.call("ElectricTilesControlInterface", "registerTilePrototype", names)
-```
-
-## Stage 2: Example
-
-In this code example we correctly call the remote interface inside the main handler.
-
-```lua
--- It is impossible to call a remote interface OUTSIDE of any event.
-
-local function my_register(_data_)
-
-    local names = { "space-platform-for-ground" }
-
-    remote.call("ElectricTilesControlInterface", "registerTilePrototype", names)
-
-end
-
-script.on_init(my_register)
-
-script.on_load(my_register)
-```
-
 ## Final Result
 
 If we followed these steps correctly, then we should have a result similar to this:
@@ -205,12 +169,7 @@ If we followed these steps correctly, then we should have a result similar to th
 
 </div>
 
-## Warnings!!
-
-- If for some reason the data-stage process completes correctly, but the runtime-stage not, then the player will have electric tiles that don't work and **WILL NOT WORK EVEN** if in future releases of your mod the problem gets fixed ...
-
 ## Extra Notes
 
 - You don't need to register a tile/item/recipe prototype to be able to create an electric variant. You can just pass the exactly same data to the DataInterface, then it will handle the creation of the variant.
-- Remember to **ALWAYS** handle the remote calling inside the respective events.
 - If you think that the modding documentation should be fixed/upgraded/re-done, I'm able to take suggestions.
