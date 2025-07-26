@@ -22,7 +22,7 @@ local upgrade_to_concrete_recipe = {
     --
     energy_required = 10,
     --
-    subgroup = "terrain",
+    subgroup = custom_definitions.item_prefix .. "terrain",
     --
     auto_recycle = false,
     --
@@ -58,7 +58,7 @@ local upgrade_to_ref_conc_recipe = {
     --
     energy_required = 15,
     --
-    subgroup = "terrain",
+    subgroup = custom_definitions.item_prefix .. "terrain",
     --
     auto_recycle = false,
     --

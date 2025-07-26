@@ -10,13 +10,29 @@ local copper_wire_icon_move = 0.50
 
 ----------------------------------
 
+local _vanilla_terrain_subgroup = data.raw["item-subgroup"]["terrain"]
+
+local electric_terrain_subgroup = {
+    --
+    type = "item-subgroup", group = _vanilla_terrain_subgroup.group,
+    --
+    order = _vanilla_terrain_subgroup.order .. "-a[electric-variants]",
+    --
+    name = custom_definitions.item_prefix .. _vanilla_terrain_subgroup.name,
+    --
+}
+
+data:extend({ electric_terrain_subgroup })
+
+------------------------------------------
+
 local default_tile = {
     --
     type = "tile",
     --
     order = "a[base]",
     --
-    minable = { mining_time = 00.10, result = "" }
+    minable = { mining_time = 00.10, result = "" },
     --
 }
 
@@ -26,13 +42,15 @@ local default_item = {
     --
     order = "a[base]",
     --
+    subgroup = electric_terrain_subgroup.name,
+    --
     place_as_tile = {
         --
         result = "",
         --
         condition_size = 1,
         --
-        condition = { layers = { water_tile = true } }
+        condition = { layers = { water_tile = true } },
         --
     },
     --
@@ -46,7 +64,7 @@ local default_recipe = {
     --
     auto_recycle = true,
     --
-    category = "advanced-crafting"
+    category = "advanced-crafting",
     --
 }
 

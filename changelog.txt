@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.9
+Date: 26-07-2025
+  Info:
+    - Added unique subgroup for electric tiles variants.
+    - Documentation updated.
+  Changes:
+    - Tech image changed.
+    - Reduced tech research duration from 60 to 30.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.8
 Date: 15-07-2025
   Modding:

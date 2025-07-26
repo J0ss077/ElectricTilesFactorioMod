@@ -91,6 +91,7 @@ ElectricTilesDataInterface.adaptTilePrototype({
 
   - _type_ (default: "item")
   - _order_ (default: "a[base]")
+  - _subgroup_ (default: "F077ET-terrain")
   - _place_as_tile_ (default: Basic _PlaceAsTileStructure_)
   - _localised_name_ (default: exactly the same as your locals files say...)
 
