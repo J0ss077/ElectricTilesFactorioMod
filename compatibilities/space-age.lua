@@ -1,6 +1,6 @@
 if not mods["space-age"] then return end
 
-local definitions = require("definitions")
+local definitions = require("scripts.var.definitions")
 
 local collection = {
     --
