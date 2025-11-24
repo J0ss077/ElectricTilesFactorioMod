@@ -1,13 +1,10 @@
-local utilities = require("scripts.modules.utilities")
+local common_utils = require("scripts.lib.common-utils")
+local temp_storage = require("scripts.var.temp-storage")
 
-local temporals = require("scripts.modules.temporals")
+if not temp_storage.get("debug-mode") then return end
 
-if not temporals.get("debug-mode") then return end
-
---------------------------------------------------
-
-local base_item = {
-
+local base = {
+    --
     type = "item",
     --
     icon_size = 64,
@@ -20,23 +17,20 @@ local base_item = {
     --
     flags = { "not-stackable", "only-in-cursor" },
     --
-    icon = "__electric-tiles__/graphics/icons/electric-proxy.png"
+    icon = "__electric-tiles__/graphics/icon/electric-proxy.png"
 }
 
 local prototypes = {}
 
-for i = 0.5, 16.0, 0.5 do
+for range = 0.5, 16.0, 0.5 do
     --
-    local prototype = table.deepcopy(base_item) -- make new
-
-    local name = utilities.getProxyNameFromSupplyDistance(i)
+    local prototype = table.deepcopy(base)
+    local name = common_utils.proxyName_from_supplyDistance(range)
 
     prototype.name = name
-
     prototype.place_result = name
 
     table.insert(prototypes, prototype)
-    --
 end
 
 data:extend(prototypes)
