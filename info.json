@@ -1,9 +1,9 @@
 {
-  "name": "electric-tiles",
-  "title": "Electric Tiles",
-  "description": "Adds conductive floor tiles that transmit power to adjacent tiles (including diagonals) and any structure on top of them, just place a power source or electric pole on top and enjoy the extra space!",
-  "factorio_version": "2.0",
-  "author": "Factory077",
-  "version": "1.2.10",
-  "dependencies": ["base >= 2.0.60", "? space-age >= 2.0.60"]
+    "name": "electric-tiles",
+    "title": "Electric Tiles",
+    "description": "Adds conductive floor tiles that transmit power to adjacent tiles (including diagonals) and any structure on top of them, just place a power source or electric pole on top and enjoy the extra space!",
+    "factorio_version": "2.0",
+    "author": "Factory077",
+    "version": "1.3.0",
+    "dependencies": ["base >= 2.0.60", "? space-age >= 2.0.60"]
 }

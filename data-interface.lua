@@ -1,39 +1,25 @@
-local internal = {
-    --
-    getInterfaceVersion = require("remotes.data-stage.get-interface-version"),
-    --
-    adaptTilePrototype = require("remotes.data-stage.adapt-tile-prototype"),
-    --
-    getItemPrefix = require("remotes.data-stage.get-item-prefix"),
-    --
-    getTilePrefix = require("remotes.data-stage.get-tile-prefix"),
-    --
-}
+local remotes = require("scripts.remote.data-stage.index")
 
 ElectricTilesDataInterface = setmetatable({}, {
-    --
-    __index = function(t, k)
-        --
-        local value = internal[k]
 
-        if value ~= nil then
+    __index = function(table, key)
+        --
+        local value = remotes[key]
+
+        if value then
             --
             return value
-            --
         else
-            --
-            error("This table doesn't contain that key.", 2)
-            --
+            error("(custom error) key not found.")
         end
-        --
     end,
 
-    __newindex = function(t, k, v)
+    __newindex = function(table, key, value)
         --
-        error("You cannot do that.", 2)
-        --
+        error("(custom error) setting values is forbidden.")
     end,
 
     __metatable = false
+    --
     --
 })

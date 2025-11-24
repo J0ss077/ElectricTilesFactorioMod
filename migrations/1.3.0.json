@@ -1,0 +1,8 @@
+{
+    "technology": [["electric-tiles-tech", "F077ET-technology"]],
+    "mod-setting": [
+        ["electric-tiles-chunk-subdivision", "F077ET-chunk-subdivision"],
+        ["electric-tiles-update-delay", "F077ET-base-update-delay"],
+        ["electric-tiles-debug-mode", "F077ET-debug-mode"]
+    ]
+}

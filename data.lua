@@ -1,17 +1,17 @@
+require("prototypes.data.carrier")
+
 require("prototypes.technology.electric-tiles-tech")
 
-require("scripts.loaders.settings-loader") --- debug
+require("scripts.unique.data-loader").load_startup_settings()
 
 require("prototypes.entity.electric-proxy")
 
+require("prototypes.item-subgroup.electric-tiles-subg")
+
 require("prototypes.item.electric-proxy")
 
-require("prototypes.data.data-carrier")
+require("data-interface")
 
-require("data-interface") --- remotes
+require("compatibilities.base")
 
-require("scripts.fragments.fragment-002")
-
-require("scripts.fragments.fragment-003")
-
-require("scripts.fragments.fragment-004")
+require("compatibilities.space-age")
