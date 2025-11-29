@@ -69,12 +69,12 @@ function module.load_temp_data()
         table.insert(proxies_names, common_utils.proxyName_from_supplyDistance(range))
     end
 
-    for __, name in ipairs(carrier.data["allowed-tiles"] --[[@as table]]) do
+    for __, name in ipairs(carrier.data["list-allowed-tiles"] --[[@as table]]) do
         --
         dict_allowed_tiles[name] = true
     end
 
-    temp_storage.set("list-allowed-tiles", carrier.data["allowed-tiles"])
+    temp_storage.set("list-allowed-tiles", carrier.data["list-allowed-tiles"])
 
     temp_storage.set("dict-allowed-tiles", dict_allowed_tiles)
 

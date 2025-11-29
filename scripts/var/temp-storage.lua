@@ -1,23 +1,23 @@
 local module = {}
 
-local storag = {}
+local memory = {}
 
---- @param name string
+--- @param key string
 ---
 --- @param value any
 ---
-function module.set(name, value)
+function module.set(key, value)
     --
-    storag[name] = value
+    memory[key] = value
 end
 
---- @param name string
+--- @param key string
 ---
 --- @return any
 ---
-function module.get(name)
+function module.get(key)
     --
-    return storag[name]
+    return memory[key]
 end
 
 return module

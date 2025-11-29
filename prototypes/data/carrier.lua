@@ -6,7 +6,7 @@ data:extend({
         ----
         data = {
             ----
-            ["allowed-tiles"] = {}
+            ["list-allowed-tiles"] = {}
         },
     },
 })
