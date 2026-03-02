@@ -1,5 +1,3 @@
-local data_loader = require("scripts.unique.data-loader")
-
 local module = {}
 
 function module.init()
