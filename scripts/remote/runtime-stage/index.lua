@@ -1,0 +1,3 @@
+local remotes = {}
+
+return remotes

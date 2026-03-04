@@ -25,9 +25,11 @@ local prototypes = {}
 for range = 0.5, 16.0, 0.5 do
     --
     local prototype = table.deepcopy(base)
+
     local name = common_utils.proxyName_from_supplyDistance(range)
 
     prototype.name = name
+
     prototype.place_result = name
 
     table.insert(prototypes, prototype)

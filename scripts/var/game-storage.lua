@@ -7,16 +7,46 @@ end
 
 function module.load()
     --
+    -- nothing for now ...
 end
 
---- Maintains the save integrity
+--- maintains the save integrity
 ---
 function module.check_storage_integrity()
     --
-    module.set("base-caching-chunks", module.get("base-caching-chunks") or {})
+    module.set("base-caching-chunks", module.get("base-caching-chunks") or { ["8x8"] = {}, ["16x16"] = {}, ["32x32"] = {} })
+    module.set("long-caching-chunks", module.get("long-caching-chunks") or { ["8x8"] = {}, ["16x16"] = {}, ["32x32"] = {} })
     --
-    module.set("long-caching-chunks", module.get("long-caching-chunks") or {})
 end
+
+---------------------------------------------------------------
+--------------------- CACHING METHOD --------------------------
+---------------------------------------------------------------
+---
+--- cache = {
+---     ["8x8"] = {
+---         ["{surface_name}/{chunk_x}/{chunk_y}"] = true,
+---         ["{surface_name}/{chunk_x}/{chunk_y}"] = true,
+---         ...,
+---         ...,
+---     },
+---     ["16x16"] = {
+---         ["nauvis/1/1"] = true,
+---         ["nauvis/2/2"] = true,
+---         ...,
+---         ...,
+---     },
+---     ...,
+---     ...,
+--- }
+---
+--- this method allows fast indexing of cached chunks based on chunk size:
+---
+---   x0 => chunk's X position: 0
+---   y0 => chunk's Y position: 0
+---
+---------------------------------------------------------------
+---------------------------------------------------------------
 
 --- @param key string
 ---
