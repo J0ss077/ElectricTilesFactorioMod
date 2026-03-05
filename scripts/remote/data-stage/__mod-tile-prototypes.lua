@@ -1,9 +1,10 @@
 local definitions = require("scripts.var.definitions")
+
 local modder = require("prototypes.modder.tile-modder")
 
 return function(collection)
     --
-    for __, base_data in ipairs(collection) do
+    for i0, base_data in ipairs(collection) do
         --
         local lock = true
 

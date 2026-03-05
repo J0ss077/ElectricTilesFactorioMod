@@ -1,4 +1,5 @@
 local common_utils = require("scripts.lib.common-utils")
+
 local temp_storage = require("scripts.var.temp-storage")
 
 local module = {}
@@ -12,17 +13,17 @@ function module.load_runtime_settings()
     --
     local setting_001 = settings.global["F077ET-chunk-subdivision"].value
 
-    if setting_001 == "8x8" then
+    if setting_001 == "x8" then
         --
-        temp_storage.set("chunk-area-size", 08.0)
+        temp_storage.set("chunk-area-size", 08)
         --
-    elseif setting_001 == "16x16" then
+    elseif setting_001 == "x16" then
         --
-        temp_storage.set("chunk-area-size", 16.0)
+        temp_storage.set("chunk-area-size", 16)
         --
-    elseif setting_001 == "32x32" then
+    elseif setting_001 == "x32" then
         --
-        temp_storage.set("chunk-area-size", 32.0)
+        temp_storage.set("chunk-area-size", 32)
     end
 
     local setting_002 = settings.global["F077ET-base-update-delay"].value
@@ -69,7 +70,7 @@ function module.load_temp_data()
         table.insert(proxies_names, common_utils.proxyName_from_supplyDistance(range))
     end
 
-    for __, name in ipairs(carrier.data["list-allowed-tiles"] --[[@as table]]) do
+    for i0, name in ipairs(carrier.data["list-allowed-tiles"] --[[@as table]]) do
         --
         dict_allowed_tiles[name] = true
     end

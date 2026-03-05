@@ -1,12 +1,6 @@
-local new_commands = {
-    {
-        name = "F077ET-recalculateAllSurfaces",
-        description = "Recalculates all surfaces in the game",
-        action = require("remotes.console.proxy-recalculateAllSurfaces")
-    }
-}
+local remotes = require("scripts.remote.console.index")
 
-for __, command in ipairs(new_commands) do
+for i0, command in ipairs(remotes) do
     --
     commands.add_command(command.name, command.description, command.action)
     --

@@ -19,7 +19,7 @@ local collection = {
     { item = "refined-hazard-concrete", tile = "refined-hazard-concrete-right" },
 }
 
-for __, objects in ipairs(collection) do
+for i0, objects in ipairs(collection) do
     --
     local tile_item_name = definitions.item_prefix .. objects.item
 

@@ -5,5 +5,5 @@
     "factorio_version": "2.0",
     "author": "Factory077",
     "version": "1.3.0",
-    "dependencies": ["base >= 2.0.60", "? space-age >= 2.0.60"]
+    "dependencies": ["base >= 2.0.73", "? space-age >= 2.0.73"]
 }

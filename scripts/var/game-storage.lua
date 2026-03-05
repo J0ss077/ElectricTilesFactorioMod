@@ -14,8 +14,11 @@ end
 ---
 function module.check_storage_integrity()
     --
-    module.set("base-caching-chunks", module.get("base-caching-chunks") or { ["8x8"] = {}, ["16x16"] = {}, ["32x32"] = {} })
-    module.set("long-caching-chunks", module.get("long-caching-chunks") or { ["8x8"] = {}, ["16x16"] = {}, ["32x32"] = {} })
+    local caching_template = { ["x8"] = {}, ["x16"] = {}, ["x32"] = {} }
+
+    module.set("base-caching-chunks", module.get("base-caching-chunks") or table.deepcopy(caching_template))
+    --
+    module.set("long-caching-chunks", module.get("long-caching-chunks") or table.deepcopy(caching_template))
     --
 end
 
@@ -24,20 +27,14 @@ end
 ---------------------------------------------------------------
 ---
 --- cache = {
----     ["8x8"] = {
+---     ["x8"] = {
 ---         ["{surface_name}/{chunk_x}/{chunk_y}"] = true,
 ---         ["{surface_name}/{chunk_x}/{chunk_y}"] = true,
----         ...,
----         ...,
 ---     },
----     ["16x16"] = {
+---     ["x16"] = {
 ---         ["nauvis/1/1"] = true,
 ---         ["nauvis/2/2"] = true,
----         ...,
----         ...,
 ---     },
----     ...,
----     ...,
 --- }
 ---
 --- this method allows fast indexing of cached chunks based on chunk size:

@@ -1,4 +1,5 @@
 local definitions = require("scripts.var.definitions")
+
 local common_utils = require("scripts.lib.common-utils")
 
 --- phase 01: base adaptations
@@ -32,11 +33,13 @@ item_hazard_concrete.subgroup = nil
 local tile_hazard_concrete_left = table.deepcopy(data.raw.tile["hazard-concrete-left"])
 
 tile_hazard_concrete_left.next_direction = definitions.tile_prefix .. "hazard-concrete-right"
+
 tile_hazard_concrete_left.layer = tile_hazard_concrete_left.layer + 64
 
 local tile_hazard_concrete_right = table.deepcopy(data.raw.tile["hazard-concrete-right"])
 
 tile_hazard_concrete_right.next_direction = definitions.tile_prefix .. "hazard-concrete-left"
+
 tile_hazard_concrete_right.layer = tile_hazard_concrete_right.layer + 64
 
 --- extra configuration
@@ -44,6 +47,7 @@ tile_hazard_concrete_right.layer = tile_hazard_concrete_right.layer + 64
 local new_hazard_concrete_name = definitions.item_prefix .. "hazard-concrete"
 
 tile_hazard_concrete_right.placeable_by = { item = new_hazard_concrete_name, count = 1 }
+
 tile_hazard_concrete_right.minable.result = new_hazard_concrete_name
 
 local hazard_concrete_recipe = {
@@ -74,11 +78,13 @@ item_refined_hazard_concrete.subgroup = nil
 local tile_refined_hazard_concrete_left = table.deepcopy(data.raw.tile["refined-hazard-concrete-left"])
 
 tile_refined_hazard_concrete_left.next_direction = definitions.tile_prefix .. "refined-hazard-concrete-right"
+
 tile_refined_hazard_concrete_left.layer = tile_refined_hazard_concrete_left.layer + 64
 
 local tile_refined_hazard_concrete_right = table.deepcopy(data.raw.tile["refined-hazard-concrete-right"])
 
 tile_refined_hazard_concrete_right.next_direction = definitions.tile_prefix .. "refined-hazard-concrete-left"
+
 tile_refined_hazard_concrete_right.layer = tile_refined_hazard_concrete_right.layer + 64
 
 --- extra configuration
@@ -86,6 +92,7 @@ tile_refined_hazard_concrete_right.layer = tile_refined_hazard_concrete_right.la
 local new_refined_hazard_concrete_name = definitions.item_prefix .. "refined-hazard-concrete"
 
 tile_refined_hazard_concrete_right.placeable_by = { item = new_refined_hazard_concrete_name, count = 1 }
+
 tile_refined_hazard_concrete_right.minable.result = new_refined_hazard_concrete_name
 
 local refined_hazard_concrete_recipe = {

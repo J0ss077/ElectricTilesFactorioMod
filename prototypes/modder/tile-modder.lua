@@ -73,7 +73,7 @@ local module = {}
 
 function module.make_electric_variant(base_data)
     --
-    for __, object in ipairs(base_data) do
+    for i0, object in ipairs(base_data) do
         --
         if type(object) ~= "table" then error("(custom error) all data must be tables !!") end
     end
@@ -162,7 +162,7 @@ function module.make_electric_variant(base_data)
 
     if not new_recipe.enabled then
         --
-        for __, tech in ipairs(others.technologies) do
+        for i0, tech in ipairs(others.technologies) do
             --
             if data.raw["technology"][tech].effects == nil then data.raw["technology"][tech].effects = {} end
             --
