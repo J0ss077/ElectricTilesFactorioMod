@@ -5,6 +5,7 @@ local temp_storage = require("scripts.var.temp-storage")
 local daemon = {}
 
 local tbase_nth_tick = nil
+
 local tlong_nth_tick = nil
 
 --- @param new_time? integer
