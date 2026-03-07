@@ -22,6 +22,82 @@ local aux_collision_box = { left_top = { x = -0.25, y = -0.25 }, right_bottom = 
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
 
+--- @param surface LuaSurface
+---
+--- @param chunk_world_area table
+---
+--- @param cube table
+---
+--- @return LuaEntity?
+---
+local function process_cube(surface, chunk_world_area, cube)
+    --
+    local radius = cube.size / 2
+
+    local proxy_position = {
+        ---
+        x = chunk_world_area[1][1] + (cube.x - 1) + radius,
+        y = chunk_world_area[1][2] + (cube.y - 1) + radius,
+    }
+
+    local proxy = surface.create_entity {
+        --
+        name = common_utils.proxyName_from_supplyDistance(radius),
+        --
+        preserve_ghosts_and_corpses = true, raise_built = true,
+        --
+        position = proxy_position, force = "neutral",
+    }
+
+    if proxy then
+        --
+        proxy.destructible = false
+
+        if cube.touching_limits then
+            --
+            local proxy_area = {
+
+                { 0 - radius, 0 - radius },
+                { 0 + radius, 0 + radius },
+            }
+
+            local close_proxies = surface.find_entities_filtered {
+
+                name = temp_storage.get("proxies-names"),
+
+                area = {
+
+                    { proxy_position.x - 32.25, proxy_position.y - 32.25 },
+                    { proxy_position.x + 32.25, proxy_position.y + 32.25 },
+                }
+            }
+
+            for i0, close in ipairs(common_utils.find_poles_on_contact_with_area(proxy_position, proxy_area, close_proxies)) do
+                --
+                if proxy ~= close then common_utils.connect_poles(proxy, close, true) end
+                --
+            end
+        end
+        ---
+    else
+        ---
+        common_utils.debug_inGame("error spawning proxy at X:" .. proxy_position.x .. " Y:" .. proxy_position.y, true)
+        ---
+    end
+
+    for i0, sub_cube in ipairs(cube.children) do
+        --
+        local sub_proxy = process_cube(surface, chunk_world_area, sub_cube)
+        --
+        if proxy and sub_proxy then common_utils.connect_poles(proxy, sub_proxy, true) end
+        --
+    end
+
+    return proxy
+    --
+    --
+end
+
 --- @param mode "base" | "long"
 ---
 local function process_cached_chunks(mode)
@@ -36,7 +112,7 @@ local function process_cached_chunks(mode)
             --
             local surface = game.surfaces[surface_name]
             --
-            local tiles_matrix = common_utils.generate_square_matrix(2, subdivision_value, 0)
+            local tiles_matrix = common_utils.generate_square_matrix(2, subdivision_value, false)
             --
             local chunk_world_area = {
                 {
@@ -72,20 +148,24 @@ local function process_cached_chunks(mode)
                 local x = tile.position.x - chunk_world_area[1][1] + 1
                 --
                 local y = tile.position.y - chunk_world_area[1][2] + 1
-
+                --
                 tiles_matrix[x][y] = true
+                --
             end
 
             --//------------------------------//--
             --//   (3): process cubes found   //--
             --//------------------------------//--
 
-            for i0, cube in ipairs(network_mapper.process_matrix(tiles_matrix, subdivision_value, subdivision_value)) do
+            for i0, cube in ipairs(network_mapper.process_square_matrix(tiles_matrix)) do
                 --
+                process_cube(surface, chunk_world_area, cube)
                 --
             end
 
             caching_controller.clear_chunk(mode, chunk_address, subdivision_code)
+            --
+            --
         end
     end
 end
@@ -133,14 +213,9 @@ function module.update_electric_pole(entity)
         name = temp_storage.get("proxies-names"),
 
         area = {
-            {
-                esurface_area[1][1] - 32.25,
-                esurface_area[1][2] - 32.25,
-            },
-            {
-                esurface_area[2][1] + 32.25,
-                esurface_area[2][2] + 32.25,
-            },
+
+            { esurface_area[1][1] - 32.25, esurface_area[1][2] - 32.25 },
+            { esurface_area[2][1] + 32.25, esurface_area[2][2] + 32.25 },
         }
     }
 
@@ -151,6 +226,7 @@ function module.update_electric_pole(entity)
         local target_connector = close_proxy.get_wire_connector(defines.wire_connector_id.pole_copper, false)
         --
         if target_connector and not origin_connector.is_connected_to(target_connector) then origin_connector.connect_to(target_connector, false) end
+        --
     end
 end
 

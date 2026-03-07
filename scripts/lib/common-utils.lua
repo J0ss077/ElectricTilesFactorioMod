@@ -194,8 +194,6 @@ end
 ---
 function module.generate_square_matrix(dimension, length, value)
     --
-    value = value or nil
-    --
     local matrix = {}
 
     for index = 1, length do
@@ -242,6 +240,31 @@ function module.find_poles_on_contact_with_area(position, area, poles)
     return valid_poles
     --
     --
+end
+
+--- @param pole01 LuaEntity
+---
+--- @param pole02 LuaEntity
+---
+--- @param force? boolean
+---
+--- @param wire_type? any
+---
+function module.connect_poles(pole01, pole02, force, wire_type)
+    --
+    wire_type = wire_type or defines.wire_connector_id.pole_copper
+    --
+    force = force or false
+
+    local origin_connector = pole01.get_wire_connector(wire_type, force)
+
+    local target_connector = pole02.get_wire_connector(wire_type, force)
+
+    if origin_connector and target_connector and not origin_connector.is_connected_to(target_connector) then
+        --
+        origin_connector.connect_to(target_connector, not force)
+        --
+    end
 end
 
 return module
