@@ -103,6 +103,8 @@ end
 local function process_cached_chunks(mode)
     --
     local cache = game_storage.get(mode .. "-caching-chunks")
+    --
+    local count = 0
 
     for subdivision_code, subdivision_value in pairs(subdivisions) do
         --
@@ -163,7 +165,15 @@ local function process_cached_chunks(mode)
                 --
             end
 
+            --//-----------------------------------//--
+            --//   (4): update cache and counter   //--
+            --//-----------------------------------//--
+
             caching_controller.clear_chunk(mode, chunk_address, subdivision_code)
+
+            count = count + 1
+
+            if count == settings.global["F077ET-" .. mode .. "-processing-amount"].value then return end
             --
             --
         end
