@@ -20,7 +20,7 @@ local function process_chunk(remove, mode, address, surface_name, chunk_position
     --
     if not address then
         --
-        if not surface_name or not chunk_position then error("(custom error) insufficient data to perform operation.") end
+        if not surface_name or not chunk_position then error("(custom error) insufficient data to perform operation") end
         --
         address = common_utils.chunkCacheAddress_from_chunkData(surface_name, chunk_position.x, chunk_position.y)
         --

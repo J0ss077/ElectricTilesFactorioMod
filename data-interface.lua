@@ -10,13 +10,13 @@ ElectricTilesDataInterface = setmetatable({}, {
             --
             return value
         else
-            error("(custom error) key not found.")
+            error("(custom error) key not found")
         end
     end,
 
     __newindex = function(table, key, value)
         --
-        error("(custom error) setting values is forbidden.")
+        error("(custom error) setting values is forbidden")
     end,
 
     __metatable = false

@@ -1,23 +1,17 @@
-local tmp_storage = require("scripts.var.temp-storage")
-
 local data_loader = require("scripts.unique.data-loader")
 
-local update_daemon = require("scripts.unique.update-daemon")
+local updt_daemon = require("scripts.unique.update-daemon")
 
-script.on_event(defines.events.on_runtime_mod_setting_changed, function()
-    --
-    local old_setting_001 = tmp_storage.get("base-update-delay")
-    --
-    local old_setting_002 = tmp_storage.get("long-update-delay")
-    --
-    local old_setting_003 = tmp_storage.get("chunk-area-size")
-
+script.on_event(defines.events.on_runtime_mod_setting_changed, function(event_data)
+    -----------
     data_loader.load_runtime_settings()
 
-    if old_setting_001 ~= tmp_storage.get("base-update-delay") then update_daemon.reset_base_timer() end
-    --
-    if old_setting_002 ~= tmp_storage.get("long-update-delay") then update_daemon.reset_long_timer() end
-    --
-    if old_setting_003 ~= tmp_storage.get("chunk-area-size") then remote.call("ElectricTilesControlInterface", "recalculateAllSurfaces") end
-    --
+        if event_data.setting == "F077ET-base-update-delay" then updt_daemon.reset_base_timer()
+
+    elseif event_data.setting == "F077ET-long-update-delay" then updt_daemon.reset_long_timer()
+
+    elseif event_data.setting == "F077ET-chunk-subdivision" then remote.call("ElectricTilesControlInterface", "recalculateAllSurfaces")
+    ---
+    end
+    ---
 end)

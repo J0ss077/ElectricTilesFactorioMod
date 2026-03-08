@@ -39,7 +39,7 @@ return function(_data_)
                             area_x[2] + chunk_size,
                         }
 
-                        local count = custom_implementations.count_tiles_filtered(surface, { name = temp_storage.get("list-allowed-tiles"), area = { area_x, area_y } }, true)
+                        local count = custom_implementations.count_tiles_filtered(surface, { name = temp_storage.get("list-allowed-tiles"), area = { area_x, area_y }, limit = 1 }, true)
 
                         if count > 0 then
                             --

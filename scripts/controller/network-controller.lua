@@ -165,8 +165,29 @@ local function process_cached_chunks(mode)
                 --
             end
 
+            --//------------------------------//--
+            --//   (4): update common poles   //--
+            --//------------------------------//--
+
+            for i0, pole in ipairs(surface.find_entities_filtered {
+
+                type = "electric-pole",
+
+                area = {
+                    {
+                        chunk_world_area[1][1] - 1.25,
+                        chunk_world_area[1][2] - 1.25,
+                    },
+                    {
+                        chunk_world_area[2][1] + 1.25,
+                        chunk_world_area[2][2] + 1.25,
+                    },
+                },
+
+            }) do module.update_electric_pole(pole) end
+
             --//-----------------------------------//--
-            --//   (4): update cache and counter   //--
+            --//   (5): update cache and counter   //--
             --//-----------------------------------//--
 
             caching_controller.clear_chunk(mode, chunk_address, subdivision_code)

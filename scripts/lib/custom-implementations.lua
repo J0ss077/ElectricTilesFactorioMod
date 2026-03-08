@@ -26,11 +26,7 @@ local function process_tiles_filtered(mode, surface, filter, deep)
         --
         local names = common_utils.convert_array_to_dictionary(filter.name or {}, true)
 
-        local deep_filter = table.deepcopy(filter)
-
-        deep_filter.name = nil
-
-        deep_filter.has_hidden_tile = true
+        local deep_filter = { area = filter.area or nil, has_hidden_tile = true }
 
         for i0, hidding_tile in ipairs(surface.find_tiles_filtered(deep_filter)) do
             --
@@ -42,7 +38,7 @@ local function process_tiles_filtered(mode, surface, filter, deep)
                 --
                 if mode == "find" then table.insert(tiles, { name = single_hidden_name, position = hidding_tile.position, ["F077ET-isSingleHidden"] = true })
                 --
-                elseif mode == "count" then tiles = tiles + 1
+                elseif mode == "count" then tiles = tiles + 1; if filter.limit and tiles >= filter.limit then break end
                 --
                 end
             end
@@ -51,7 +47,7 @@ local function process_tiles_filtered(mode, surface, filter, deep)
                 --
                 if mode == "find" then table.insert(tiles, { name = double_hidden_name, position = hidding_tile.position, ["F077ET-isDoubleHidden"] = true })
                 --
-                elseif mode == "count" then tiles = tiles + 1
+                elseif mode == "count" then tiles = tiles + 1; if filter.limit and tiles >= filter.limit then break end
                 --
                 end
             end
@@ -59,6 +55,8 @@ local function process_tiles_filtered(mode, surface, filter, deep)
     end
 
     return tiles
+    --
+    --
 end
 
 --- @param surface LuaSurface
