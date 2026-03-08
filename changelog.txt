@@ -1,8 +1,20 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.0
-Date: ????
+Date: 08-03-2026
   Info:
     - Full code refactorization.
+  Optimizations:
+    - Processing speed increase: At least x4 times faster processing of chunks.
+    - Batch processing: Now chunks will be iterated in batches (configurable).
+    - Base/Long timers: Now robots will have an increased window of time before caching the changes (both timers configurable).
+    - Long-Term caching: Scheduled chunks will be saved in storage, allowing to keep processing between game sessions.
+    - Full surface recalculation: Recalculation of surfaces will now consume significantly less resources.
+  Bugfixes:
+    - Electric poles of arbitrary size (collision_box) will get processed correctly.
+  Scripting:
+    - Settings/Technology prototypes names changed.
+  Modding:
+    - Logic for creation of "variants" changed (check GitHub documentation).
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.10
 Date: 26-07-2025
