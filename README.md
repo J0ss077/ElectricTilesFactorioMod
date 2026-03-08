@@ -61,10 +61,10 @@ Each entry passed to **modTilePrototypes()** follows this structure:
 ```lua
 ElectricTilesDataInterface.modTilePrototypes({
     {
-        tile   = {},  -- [REQUIRED] TilePrototype data
-        item   = {},  -- [OPTIONAL] ItemPrototype data
-        recipe = {},  -- [OPTIONAL] RecipePrototype data
-        others = {},  -- [OPTIONAL] Adapter configuration flags
+        tile   = {}, -- [REQUIRED] TilePrototype data
+        item   = {}, -- [OPTIONAL] ItemPrototype data
+        recipe = {}, -- [OPTIONAL] RecipePrototype data
+        others = {}, -- [OPTIONAL] Adapter configuration flags
     },
     -- additional entries...
 })
