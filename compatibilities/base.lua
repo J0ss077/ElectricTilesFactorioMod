@@ -2,53 +2,68 @@ local definitions = require("scripts.var.definitions")
 
 local common_utils = require("scripts.lib.common-utils")
 
+local __proto_names = {
+
+    stone_path = "stone-path",
+    stone_brck = "stone-brick",
+
+    concrete = "concrete",
+
+    hazard_concrete = "hazard-concrete",
+    haz_concrete_le = "hazard-concrete-left",
+    haz_concrete_ri = "hazard-concrete-right",
+
+    refined_concrete = "refined-concrete",
+
+    refined_hazard_concrete = "refined-hazard-concrete",
+    refined_haz_concrete_le = "refined-hazard-concrete-left",
+    refined_haz_concrete_ri = "refined-hazard-concrete-right",
+}
+
 --- phase 01: base adaptations
 
 --- stone path
 
-local tile_stone_path = table.deepcopy(data.raw.tile["stone-path"])
+local tile_sto_path = table.deepcopy(data.raw.tile[__proto_names.stone_path])
 
-tile_stone_path.layer = tile_stone_path.layer + 64
+tile_sto_path.layer = tile_sto_path.layer + 64
 
-local item_stone_brick = table.deepcopy(data.raw.item["stone-brick"])
+local item_sto_brck = table.deepcopy(data.raw.item[__proto_names.stone_brck])
 
-item_stone_brick.subgroup = nil
+item_sto_brck.subgroup = nil
 
 --- concrete
 
-local tile_concrete = table.deepcopy(data.raw.tile["concrete"])
+local tile_concrete = table.deepcopy(data.raw.tile[__proto_names.concrete])
 
 tile_concrete.layer = tile_concrete.layer + 64
 
-local item_concrete = table.deepcopy(data.raw.item["concrete"])
+local item_concrete = table.deepcopy(data.raw.item[__proto_names.concrete])
 
 item_concrete.subgroup = nil
 
 --- hazard concrete
 
-local item_hazard_concrete = table.deepcopy(data.raw.item["hazard-concrete"])
+local item_hazard_concrete = table.deepcopy(data.raw.item[__proto_names.hazard_concrete])
 
 item_hazard_concrete.subgroup = nil
 
-local tile_hazard_concrete_left = table.deepcopy(data.raw.tile["hazard-concrete-left"])
+local tile_hazard_concrete_le = table.deepcopy(data.raw.tile[__proto_names.haz_concrete_le])
+local tile_hazard_concrete_ri = table.deepcopy(data.raw.tile[__proto_names.haz_concrete_ri])
 
-tile_hazard_concrete_left.next_direction = definitions.tile_prefix .. "hazard-concrete-right"
+tile_hazard_concrete_le.next_direction = definitions.tile_prefix .. __proto_names.haz_concrete_ri
+tile_hazard_concrete_ri.next_direction = definitions.tile_prefix .. __proto_names.haz_concrete_le
 
-tile_hazard_concrete_left.layer = tile_hazard_concrete_left.layer + 64
-
-local tile_hazard_concrete_right = table.deepcopy(data.raw.tile["hazard-concrete-right"])
-
-tile_hazard_concrete_right.next_direction = definitions.tile_prefix .. "hazard-concrete-left"
-
-tile_hazard_concrete_right.layer = tile_hazard_concrete_right.layer + 64
+tile_hazard_concrete_le.layer = tile_hazard_concrete_le.layer + 64
+tile_hazard_concrete_ri.layer = tile_hazard_concrete_ri.layer + 64
 
 --- extra configuration
 
-local new_hazard_concrete_name = definitions.item_prefix .. "hazard-concrete"
+local new_hazard_concrete_name = definitions.item_prefix .. __proto_names.hazard_concrete
 
-tile_hazard_concrete_right.placeable_by = { item = new_hazard_concrete_name, count = 1 }
+tile_hazard_concrete_ri.placeable_by = { item = new_hazard_concrete_name, count = 1 }
 
-tile_hazard_concrete_right.minable.result = new_hazard_concrete_name
+tile_hazard_concrete_ri.minable.result = new_hazard_concrete_name
 
 local hazard_concrete_recipe = {
     --
@@ -61,64 +76,61 @@ local hazard_concrete_recipe = {
 
 --- refined concrete
 
-local tile_refined_concrete = table.deepcopy(data.raw.tile["refined-concrete"])
+local tile_ref_conc = table.deepcopy(data.raw.tile[__proto_names.refined_concrete])
 
-tile_refined_concrete.layer = tile_refined_concrete.layer + 64
+tile_ref_conc.layer = tile_ref_conc.layer + 64
 
-local item_refined_concrete = table.deepcopy(data.raw.item["refined-concrete"])
+local item_ref_conc = table.deepcopy(data.raw.item[__proto_names.refined_concrete])
 
-item_refined_concrete.subgroup = nil
+item_ref_conc.subgroup = nil
 
 --- refined hazard concrete
 
-local item_refined_hazard_concrete = table.deepcopy(data.raw.item["refined-hazard-concrete"])
+local item_ref_hazard_conc = table.deepcopy(data.raw.item[__proto_names.refined_hazard_concrete])
 
-item_refined_hazard_concrete.subgroup = nil
+item_ref_hazard_conc.subgroup = nil
 
-local tile_refined_hazard_concrete_left = table.deepcopy(data.raw.tile["refined-hazard-concrete-left"])
+local tile_ref_hazard_conc_le = table.deepcopy(data.raw.tile[__proto_names.refined_haz_concrete_le])
+local tile_ref_hazard_conc_ri = table.deepcopy(data.raw.tile[__proto_names.refined_haz_concrete_ri])
 
-tile_refined_hazard_concrete_left.next_direction = definitions.tile_prefix .. "refined-hazard-concrete-right"
+tile_ref_hazard_conc_le.next_direction = definitions.tile_prefix .. __proto_names.refined_haz_concrete_ri
+tile_ref_hazard_conc_ri.next_direction = definitions.tile_prefix .. __proto_names.refined_haz_concrete_le
 
-tile_refined_hazard_concrete_left.layer = tile_refined_hazard_concrete_left.layer + 64
-
-local tile_refined_hazard_concrete_right = table.deepcopy(data.raw.tile["refined-hazard-concrete-right"])
-
-tile_refined_hazard_concrete_right.next_direction = definitions.tile_prefix .. "refined-hazard-concrete-left"
-
-tile_refined_hazard_concrete_right.layer = tile_refined_hazard_concrete_right.layer + 64
+tile_ref_hazard_conc_le.layer = tile_ref_hazard_conc_le.layer + 64
+tile_ref_hazard_conc_ri.layer = tile_ref_hazard_conc_ri.layer + 64
 
 --- extra configuration
 
-local new_refined_hazard_concrete_name = definitions.item_prefix .. "refined-hazard-concrete"
+local new_refined_hazard_concrete_name = definitions.item_prefix .. __proto_names.refined_hazard_concrete
 
-tile_refined_hazard_concrete_right.placeable_by = { item = new_refined_hazard_concrete_name, count = 1 }
+tile_ref_hazard_conc_ri.placeable_by = { item = new_refined_hazard_concrete_name, count = 1 }
 
-tile_refined_hazard_concrete_right.minable.result = new_refined_hazard_concrete_name
+tile_ref_hazard_conc_ri.minable.result = new_refined_hazard_concrete_name
 
-local refined_hazard_concrete_recipe = {
+local ref_hazard_conc_recipe = {
     --
     energy_required = .25,
     --
     category = "crafting",
     --
-    ingredients = { { type = "item", name = definitions.item_prefix .. item_refined_concrete.name, amount = 10 } }
+    ingredients = { { type = "item", name = definitions.item_prefix .. item_ref_conc.name, amount = 10 } }
 }
 
 ElectricTilesDataInterface.modTilePrototypes({
     --
-    { tile = tile_stone_path,                   item = item_stone_brick,             others = { use_default_recipe = true } },
+    { tile = tile_sto_path,           item = item_sto_brck,        others = { use_default_recipe = true } },
     --
-    { tile = tile_concrete,                     item = item_concrete,                others = { use_default_recipe = true } },
+    { tile = tile_concrete,           item = item_concrete,        others = { use_default_recipe = true } },
     --
-    { tile = tile_hazard_concrete_left,         item = item_hazard_concrete,         others = { result_amount = 10 },       recipe = hazard_concrete_recipe },
+    { tile = tile_ref_conc,           item = item_ref_conc,        others = { use_default_recipe = true } },
     --
-    { tile = tile_hazard_concrete_right },
+    { tile = tile_hazard_concrete_le, item = item_hazard_concrete, others = { result_amount = 10 },       recipe = hazard_concrete_recipe },
     --
-    { tile = tile_refined_concrete,             item = item_refined_concrete,        others = { use_default_recipe = true } },
+    { tile = tile_ref_hazard_conc_le, item = item_ref_hazard_conc, others = { result_amount = 10 },       recipe = ref_hazard_conc_recipe },
     --
-    { tile = tile_refined_hazard_concrete_left, item = item_refined_hazard_concrete, others = { result_amount = 10 },       recipe = refined_hazard_concrete_recipe },
+    { tile = tile_hazard_concrete_ri },
     --
-    { tile = tile_refined_hazard_concrete_right },
+    { tile = tile_ref_hazard_conc_ri },
 })
 
 --- phase 02: upgrade recipes

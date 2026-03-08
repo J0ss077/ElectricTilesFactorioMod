@@ -19,3 +19,7 @@ require("data-interface")
 require("compatibilities.base")
 
 require("compatibilities.space-age")
+
+--require("prototypes.testing.foundation")
+
+--require("prototypes.testing.poles-size")

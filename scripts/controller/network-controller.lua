@@ -175,12 +175,12 @@ local function process_cached_chunks(mode)
 
                 area = {
                     {
-                        chunk_world_area[1][1] - 1.25,
-                        chunk_world_area[1][2] - 1.25,
+                        chunk_world_area[1][1] - 0.25,
+                        chunk_world_area[1][2] - 0.25,
                     },
                     {
-                        chunk_world_area[2][1] + 1.25,
-                        chunk_world_area[2][2] + 1.25,
+                        chunk_world_area[2][1] + 0.25,
+                        chunk_world_area[2][2] + 0.25,
                     },
                 },
 
