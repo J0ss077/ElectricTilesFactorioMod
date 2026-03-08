@@ -103,7 +103,7 @@ The item used to place the electric tile. Mirrors a standard [ItemPrototype](htt
 - **type** -- defaults to "item"
 - **order** -- defaults to "a[base]"
 - **subgroup** -- defaults to "F077ET-terrain"
-- **place_as_tile** -- defaults to basic _PlaceAsTileStructure_
+- **place_as_tile** -- defaults to the basic _PlaceAsTileStructure_
 - **localised_name** -- read from your locale files
 
 **Overwritten properties:**
