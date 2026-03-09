@@ -107,15 +107,21 @@ local function process_cached_chunks(mode)
     local count = 0
 
     for subdivision_code, subdivision_value in pairs(subdivisions) do
-        --
+        ---
         for chunk_address, v0 in pairs(cache[subdivision_code]) do
-            --
+            -----
             local surface_name, chunk_x, chunk_y = common_utils.chunkData_from_chunkCacheAddress(chunk_address)
-            --
+            -----
             local surface = game.surfaces[surface_name]
-            --
+
+            if not surface then caching_controller.clear_chunk(mode, chunk_address, subdivision_code); goto continue end
+
+            --//-------------------------------//--
+            --//   (1): prepare complex vars   //--
+            --//-------------------------------//--
+
             local tiles_matrix = common_utils.generate_square_matrix(2, subdivision_value, false)
-            --
+
             local chunk_world_area = {
                 {
                     chunk_x * subdivision_value,
@@ -128,7 +134,7 @@ local function process_cached_chunks(mode)
             }
 
             --//------------------------------//--
-            --//   (1): destroy old proxies   //--
+            --//   (2): destroy old proxies   //--
             --//------------------------------//--
 
             for i0, proxy in ipairs(surface.find_entities_filtered {
@@ -138,7 +144,7 @@ local function process_cached_chunks(mode)
             }) do proxy.destroy() end
 
             --//-------------------------------//--
-            --//   (2): map tiles' positions   //--
+            --//   (3): map tiles' positions   //--
             --//-------------------------------//--
 
             for i0, tile in ipairs(custom_implementations.find_tiles_filtered(surface, {
@@ -156,7 +162,7 @@ local function process_cached_chunks(mode)
             end
 
             --//------------------------------//--
-            --//   (3): process cubes found   //--
+            --//   (4): process cubes found   //--
             --//------------------------------//--
 
             for i0, cube in ipairs(network_mapper.process_square_matrix(tiles_matrix)) do
@@ -166,7 +172,7 @@ local function process_cached_chunks(mode)
             end
 
             --//------------------------------//--
-            --//   (4): update common poles   //--
+            --//   (5): update common poles   //--
             --//------------------------------//--
 
             for i0, pole in ipairs(surface.find_entities_filtered {
@@ -187,7 +193,7 @@ local function process_cached_chunks(mode)
             }) do module.update_electric_pole(pole) end
 
             --//-----------------------------------//--
-            --//   (5): update cache and counter   //--
+            --//   (6): update cache and counter   //--
             --//-----------------------------------//--
 
             caching_controller.clear_chunk(mode, chunk_address, subdivision_code)
@@ -195,6 +201,8 @@ local function process_cached_chunks(mode)
             count = count + 1
 
             if count == settings.global["F077ET-" .. mode .. "-processing-amount"].value then return end
+
+            ::continue::
             --
             --
         end
