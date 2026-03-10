@@ -1,8 +1,7 @@
--- base tiles
-require("compatibilities.base")
+require("compatibilities.base") -- base tiles
 
--- frozen tiles
-require("compatibilities.space-age")
+require("compatibilities.space-age") -- frozen tiles
 
--- colored tiles
-require("compatibilities.dectorio")
+require("compatibilities.dectorio") -- colored tiles
+
+require("compatibilities.space-exploration") -- space tiles

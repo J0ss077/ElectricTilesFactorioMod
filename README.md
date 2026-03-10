@@ -15,15 +15,26 @@ Grids recalculate dynamically whenever tiles are placed or removed. Processing i
 
 ### Features
 
-- **Blueprint-compatible** -- works seamlessly with blueprints and blueprint books.
-- **Works in new and existing saves** -- no need to start a fresh game.
-- **Compatible with Space Age** -- includes support for Aquilo's frozen tiles.
-- **Hazard tile variants** -- electric versions of hazard concretes are included out of the box.
-- **Upgrade recipes** -- tiles can be upgraded to the next tiers just like their base variants.
+- **Blueprint compatible** -- Works seamlessly with blueprints and blueprint books.
+- **Works in new and existing saves** -- No need to start a fresh game.
+- **Hazard tile variants** -- Electric versions of hazard concretes are included out of the box.
+- **Upgrade recipes** -- Tiles can be upgraded to the next tiers just like their base variants.
+
+### Compatibilities
+
+- **Dectorio**
+- **Space Exploration**
 
 ### Known Issues
 
 - Mods that rewire electric poles may conflict with the invisible electric grids. If you experience unexpected behavior with a specific mod, feel free to report it in the discussion section.
+
+### Console Commands
+
+You may want to use some of this commands, so u can fix/update the surfaces **_(planets)_**.
+
+- **_F077ET-recalculateAllSurfaces_** -- Recalculates all the game surfaces.
+- **_F077ET-recalculateLookingSurface_** -- Recalculates **ONLY** the surface that **YOU** are looking at.
 
 ---
 
