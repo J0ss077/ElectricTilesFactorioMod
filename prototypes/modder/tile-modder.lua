@@ -1,7 +1,11 @@
-local definitions = require("scripts.var.definitions")
-local common_utils = require("scripts.lib.common-utils")
+local recycling = mods["quality"] and require("__quality__.prototypes.recycling") or nil
+----------------------------------------------------------------------------------------
 
 local carrier = data.raw["mod-data"]["F077ET-data-carrier"]
+
+local common_utils = require("scripts.lib.common-utils")
+
+local definitions = require("scripts.var.definitions")
 
 local copper_wire_icon = "__electric-tiles__/graphics/icon/copper-wire.png"
 local copper_wire_icon_percent_shift = { x = -0.50, y = -0.50 }
@@ -22,7 +26,7 @@ local default_item = {
     --
     order = "a[base]",
     --
-    subgroup = definitions.item_prefix .. data.raw["item-subgroup"]["terrain"].name,
+    subgroup = definitions.item_prefix .. "terrain",
     --
     place_as_tile = {
         --
@@ -89,7 +93,7 @@ function module.make_electric_variant(base_data)
 
     assign_prototype_localised_name(new_tile, "tile-name." .. base_data.tile.name, "tile-name.F077ET-tile-postfix")
 
-    new_tile.order = base_data.tile.order .. "-e[electric-variant]"
+    new_tile.order = new_tile.order .. "-e[electric-variant]"
 
     data:extend({ new_tile })
 
@@ -105,7 +109,7 @@ function module.make_electric_variant(base_data)
 
     assign_prototype_localised_name(new_item, "item-name." .. base_data.item.name, "item-name.F077ET-item-postfix")
 
-    new_item.order = base_data.item.order .. "-e[electric-variant]"
+    new_item.order = new_item.order .. "-e[electric-variant]"
 
     new_item.place_as_tile.result = new_tile.name
 
@@ -158,7 +162,7 @@ function module.make_electric_variant(base_data)
 
     new_recipe.results = { { type = "item", name = new_item.name, amount = others.result_amount } }
 
-    data:extend({ new_recipe })
+    data:extend({ new_recipe }); if recycling then recycling.generate_recycling_recipe(new_recipe) end
 
     if not new_recipe.enabled then
         --

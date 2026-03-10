@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.2
+Date: 09-03-2026
+  Compatibility:
+    - Added compatibility with Dectorio.
+  Changes:
+    - The base/space-age variants now are generated during the "data-updates" stage.
+  Minor Features:
+    - Now the creation of variants in any data stage will generate the respective recycling recipes correctly.
+  Bugfixes:
+    - The "order" property now can be "nil" when creating variants (as it should have been).
+---------------------------------------------------------------------------------------------------
 Version: 1.3.1
 Date: 09-03-2026
   Bugfixes:
