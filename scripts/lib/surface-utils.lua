@@ -85,4 +85,46 @@ function module.count_tiles_filtered(surface, filter, deep)
     return process_tiles_filtered("count", surface, filter, deep) --- @type integer
 end
 
+--- @param surface LuaSurface
+---
+function module.recalculate_surface(surface)
+    --
+    for chunk in surface.get_chunks() do
+            --
+            if surface.is_chunk_generated(chunk) then
+                --
+                for mult_x = 0, chunk_part - 1, 1 do
+                    --
+                    for mult_y = 0, chunk_part - 1, 1 do
+                        --
+                        local area_x = {
+
+                            (32 * chunk.x) + (mult_x * chunk_size),
+                            (32 * chunk.y) + (mult_y * chunk_size),
+                        }
+
+                        local area_y = {
+
+                            area_x[1] + chunk_size,
+                            area_x[2] + chunk_size,
+                        }
+
+                        local count = surface_utils.count_tiles_filtered(surface, { name = temp_storage.get("list-allowed-tiles"), area = { area_x, area_y }, limit = 1 }, true)
+
+                        if count > 0 then
+                            --
+                            caching_controller.cache_chunk("base", surface.name, {
+
+                                x = area_x[1] / chunk_size,
+                                y = area_x[2] / chunk_size,
+                            })
+                            --
+                            --
+                        end
+                    end
+                end
+            end
+        end
+end
+
 return module
