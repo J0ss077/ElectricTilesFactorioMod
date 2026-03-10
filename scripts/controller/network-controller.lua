@@ -1,8 +1,8 @@
-local custom_implementations = require("scripts.lib.custom-implementations")
-
 local caching_controller = require("scripts.controller.cache-controller")
 
 local network_mapper = require("scripts.unique.network-mapper")
+
+local surface_utils = require("scripts.lib.surface-utils")
 
 local game_storage = require("scripts.var.game-storage")
 
@@ -147,7 +147,7 @@ local function process_cached_chunks(mode)
             --//   (3): map tiles' positions   //--
             --//-------------------------------//--
 
-            for i0, tile in ipairs(custom_implementations.find_tiles_filtered(surface, {
+            for i0, tile in ipairs(surface_utils.find_tiles_filtered(surface, {
                 --
                 name = temp_storage.get("list-allowed-tiles"), area = chunk_world_area
                 --
@@ -245,7 +245,7 @@ function module.update_electric_pole(entity)
         },
     }
 
-    if custom_implementations.count_tiles_filtered(entity.surface, { name = temp_storage.get("list-allowed-tiles"), area = esurface_area }, true) == 0 then return end
+    if surface_utils.count_tiles_filtered(entity.surface, { name = temp_storage.get("list-allowed-tiles"), area = esurface_area }, true) == 0 then return end
 
     local close_proxies = entity.surface.find_entities_filtered {
 

@@ -121,6 +121,7 @@ function module.parse_item_icons(item, clean)
     if clean then
         --
         item.icon = nil
+        --
         item.icon_size = nil
     end
 end
