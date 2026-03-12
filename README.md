@@ -1,6 +1,7 @@
 # Electric Tiles
 
-A new and optimized version of _Powered Floor Extended_!  
+A new and optimized version of _Powered Floor Extended!_
+
 Adds conductive floor tiles that transmit power to adjacent tiles (including diagonals) and any structure on top of them, just place a power source or electric pole on top and enjoy the extra space!
 
 > **Note:** Placing a large number of tiles (+5K) quickly may cause brief UPS spikes while the grid recalculates.
@@ -24,10 +25,11 @@ Grids recalculate dynamically whenever tiles are placed or removed. Processing i
 
 - **Dectorio**
 - **Space Exploration**
+- **Krastorio2**
 
 ### Known Issues
 
-- Mods that rewire electric poles may conflict with the invisible electric grids. If you experience unexpected behavior with a specific mod, feel free to report it in the discussion section.
+- Mods that rewire electric poles may conflict with the invisible electric grids.
 
 ### Console Commands
 

@@ -33,7 +33,7 @@ for i0, objects in ipairs(collection) do
 
     frozen_duplicate.placeable_by = { item = tile_item_name, count = 1 }
 
-    frozen_duplicate.layer = frozen_duplicate.layer + 64
+    --frozen_duplicate.layer = frozen_duplicate.layer + 32
 
     frozen_duplicate.minable.result = tile_item_name
 

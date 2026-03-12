@@ -133,7 +133,7 @@ function module.make_electric_variant(base_data)
         --
         draw_background = false,
         --
-        scale = icon_size / 64 * 0.50 * copper_wire_icon_percent_scale,
+        scale = icon_size / 64 * 0.5 * copper_wire_icon_percent_scale,
         --
         shift = {
             --
