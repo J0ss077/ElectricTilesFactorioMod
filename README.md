@@ -26,6 +26,7 @@ Grids recalculate dynamically whenever tiles are placed or removed. Processing i
 - **Dectorio**
 - **Space Exploration**
 - **Krastorio2**
+- **Krastorio2 Spaced Out**
 
 ### Known Issues
 

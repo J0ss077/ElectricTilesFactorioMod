@@ -137,11 +137,8 @@ local modded_concrete_item = data.raw.item[definitions.item_prefix .. "concrete"
 
 local base_recipe_name = { "", { "recipe-name.FO77ET-upgrade-prefix" }, " " }
 
-local name01 = table.deepcopy(base_recipe_name)
-local name02 = table.deepcopy(base_recipe_name)
-
-common_utils.combine_arrays(name01, table.pack(table.unpack(modded_concrete_item.localised_name --[[@as table]], 2)))
-common_utils.combine_arrays(name02, table.pack(table.unpack(modded_ref_conc_item.localised_name --[[@as table]], 2)))
+local L01 = common_utils.combine_arrays(base_recipe_name, table.pack(table.unpack(modded_concrete_item.localised_name --[[@as table]], 2)), true)
+local L02 = common_utils.combine_arrays(base_recipe_name, table.pack(table.unpack(modded_ref_conc_item.localised_name --[[@as table]], 2)), true)
 
 local upgrade_to_concrete_recipe = {
     --
@@ -149,23 +146,23 @@ local upgrade_to_concrete_recipe = {
     --
     enabled = false,
     --
+    category = "crafting-with-fluid",
+    --
+    name = modded_st_brick_item.name .. "-to-" .. modded_concrete_item.name,
+    --
     energy_required = 10,
     --
     auto_recycle = false,
     --
-    localised_name = name01,
+    localised_name = L01,
     --
-    category = "crafting-with-fluid",
+    subgroup = definitions.item_prefix .. "terrain",
     --
     icons = table.deepcopy(modded_concrete_item.icons),
     --
     order = modded_concrete_item.order .. "-u[upgrade]",
     --
-    name = modded_st_brick_item.name .. "-to-" .. modded_concrete_item.name,
-    --
     results = { { type = "item", name = modded_concrete_item.name, amount = 10 } },
-    --
-    subgroup = definitions.item_prefix .. data.raw["item-subgroup"]["terrain"].name,
     --
     ingredients = {
         --
@@ -183,23 +180,23 @@ local upgrade_to_ref_conc_recipe = {
     --
     enabled = false,
     --
+    category = "crafting-with-fluid",
+    --
+    name = modded_concrete_item.name .. "-to-" .. modded_ref_conc_item.name,
+    --
     energy_required = 15,
     --
     auto_recycle = false,
     --
-    localised_name = name02,
+    localised_name = L02,
     --
-    category = "crafting-with-fluid",
+    subgroup = definitions.item_prefix .. "terrain",
     --
     icons = table.deepcopy(modded_ref_conc_item.icons),
     --
     order = modded_ref_conc_item.order .. "-u[upgrade]",
     --
-    name = modded_concrete_item.name .. "-to-" .. modded_ref_conc_item.name,
-    --
     results = { { type = "item", name = modded_ref_conc_item.name, amount = 10 } },
-    --
-    subgroup = definitions.item_prefix .. data.raw["item-subgroup"]["terrain"].name,
     --
     ingredients = {
         --
