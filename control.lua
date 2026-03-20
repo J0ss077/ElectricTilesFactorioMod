@@ -26,6 +26,8 @@ require("scripts.handler.on_entity_built_tile")
 
 require("scripts.handler.on_entity_mined_tile")
 
+require("scripts.handler.script_raised_destroy")
+
 require("scripts.handler.script_raised_set_tiles")
 
 require("control-interface")
