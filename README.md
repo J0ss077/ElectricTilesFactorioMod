@@ -178,8 +178,6 @@ ElectricTilesDataInterface.modTilePrototypes({
 
 Note that the copper wire icon is disabled here because the space platform tile already has a distinctive appearance.
 
----
-
 ## Additional Notes
 
 - **You do not need pre-registered prototypes.** You can define tile, item, and recipe tables from scratch and pass them directly to **modTilePrototypes()**. The interface will handle prototype registration.
