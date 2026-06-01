@@ -27,7 +27,8 @@ for i0, objects in ipairs(collection) do
 
     local frozen_duplicate = table.deepcopy(data.raw.tile["frozen-" .. objects.tile])
 
-    ---------------------------------------------------------------------------------
+    --------------------------------------------------------------------------------
+    --------------------------------------------------------------------------------
 
     tile_reference.frozen_variant = definitions.tile_prefix .. frozen_duplicate.name
 
@@ -39,6 +40,7 @@ for i0, objects in ipairs(collection) do
 
     frozen_duplicate.thawed_variant = tile_reference.name
 
+    -----------------------------------------------------
     -----------------------------------------------------
 
     ElectricTilesDataInterface.modTilePrototypes({ { tile = frozen_duplicate } })
