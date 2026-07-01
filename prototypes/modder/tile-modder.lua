@@ -53,7 +53,7 @@ local default_recipe = {
     --
     auto_recycle = true,
     --
-    category = "advanced-crafting"
+    categories = { "advanced-crafting" }
 }
 
 local default_others = {

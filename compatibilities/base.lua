@@ -58,7 +58,7 @@ local hazard_concrete_recipe = {
     --
     energy_required = .25,
     --
-    category = "crafting",
+    categories = { "crafting" },
     --
     ingredients = { { type = "item", name = definitions.item_prefix .. item_concrete.name, amount = 10 } }
 }
@@ -92,7 +92,7 @@ local ref_hazard_conc_recipe = {
     --
     energy_required = .25,
     --
-    category = "crafting",
+    categories = { "crafting" },
     --
     ingredients = { { type = "item", name = definitions.item_prefix .. item_ref_conc.name, amount = 10 } }
 }
@@ -131,7 +131,7 @@ local upgrade_to_concrete_recipe = {
     --
     enabled = false,
     --
-    category = "crafting-with-fluid",
+    categories = { "crafting-with-fluid" },
     --
     name = modded_st_brick_item.name .. "-to-" .. modded_concrete_item.name,
     --
@@ -165,7 +165,7 @@ local upgrade_to_ref_conc_recipe = {
     --
     enabled = false,
     --
-    category = "crafting-with-fluid",
+    categories = { "crafting-with-fluid" },
     --
     name = modded_concrete_item.name .. "-to-" .. modded_ref_conc_item.name,
     --
