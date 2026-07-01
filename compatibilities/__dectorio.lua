@@ -2,13 +2,13 @@ if not mods["Dectorio"] or not DECT.ENABLED["painted-concrete"] then return end
 
 local definitions = require("scripts.var.definitions")
 
---// AUX Vars/Structures
+--// AUX vars/structures
 
 local others = { use_default_recipe = true, technologies = { "dect-concrete-paint" } }
 
 local subgroup00 = data.raw["item-subgroup"][definitions.item_prefix .. "terrain"]
 
---// Hazard Tiles
+--// hazard tiles
 
 local subgroup01 = {
     --
@@ -70,7 +70,7 @@ for i0, variant in pairs(DECT.CONFIG.PAINT_VARIANTS) do
     end
 end
 
---// Colored Refined Concretes
+--// colored refined concretes
 
 local subgroup03 = {
     --

@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.4.0
+Date: 01-07-2026
+  Info:
+    - Factorio's 2.1 port (please comment any problem you encounter).
+    - Dectorio and Space Exploration compatibilities removed (until they are updated).
+    - Minimal code changes.
+---------------------------------------------------------------------------------------------------
 Version: 1.3.6
 Date: 19-03-2026
   Bugfixes:

@@ -25,9 +25,6 @@ local __proto_names = {
 --- stone path
 
 local tile_sto_path = table.deepcopy(data.raw.tile[__proto_names.stone_path])
-
---tile_sto_path.layer = tile_sto_path.layer + 32
-
 local item_sto_brck = table.deepcopy(data.raw.item[__proto_names.stone_brck])
 
 item_sto_brck.subgroup = nil
@@ -35,9 +32,6 @@ item_sto_brck.subgroup = nil
 --- concrete
 
 local tile_concrete = table.deepcopy(data.raw.tile[__proto_names.concrete])
-
---tile_concrete.layer = tile_concrete.layer + 32
-
 local item_concrete = table.deepcopy(data.raw.item[__proto_names.concrete])
 
 item_concrete.subgroup = nil
@@ -53,9 +47,6 @@ local tile_hazard_concrete_ri = table.deepcopy(data.raw.tile[__proto_names.haz_c
 
 tile_hazard_concrete_le.next_direction = definitions.tile_prefix .. __proto_names.haz_concrete_ri
 tile_hazard_concrete_ri.next_direction = definitions.tile_prefix .. __proto_names.haz_concrete_le
-
---tile_hazard_concrete_le.layer = tile_hazard_concrete_le.layer + 32
---tile_hazard_concrete_ri.layer = tile_hazard_concrete_ri.layer + 32
 
 --- extra configuration
 
@@ -75,9 +66,6 @@ local hazard_concrete_recipe = {
 --- refined concrete
 
 local tile_ref_conc = table.deepcopy(data.raw.tile[__proto_names.refined_concrete])
-
---tile_ref_conc.layer = tile_ref_conc.layer + 32
-
 local item_ref_conc = table.deepcopy(data.raw.item[__proto_names.refined_concrete])
 
 item_ref_conc.subgroup = nil
@@ -93,9 +81,6 @@ local tile_ref_hazard_conc_ri = table.deepcopy(data.raw.tile[__proto_names.refin
 
 tile_ref_hazard_conc_le.next_direction = definitions.tile_prefix .. __proto_names.refined_haz_concrete_ri
 tile_ref_hazard_conc_ri.next_direction = definitions.tile_prefix .. __proto_names.refined_haz_concrete_le
-
---tile_ref_hazard_conc_le.layer = tile_ref_hazard_conc_le.layer + 32
---tile_ref_hazard_conc_ri.layer = tile_ref_hazard_conc_ri.layer + 32
 
 --- extra configuration
 
