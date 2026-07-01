@@ -86,7 +86,7 @@ ElectricTilesDataInterface.modTilePrototypes({
 
 You can pass multiple entries in a single call.
 
-### tile -- TilePrototype
+### tile (TilePrototype)
 
 The tile data for the electric variant. This should mirror a standard [TilePrototype](https://lua-api.factorio.com/latest/prototypes/TilePrototype.html) definition.
 
@@ -108,7 +108,7 @@ The tile data for the electric variant. This should mirror a standard [TileProto
 - **order** -- a postfix is appended
 - **localised_name** -- a postfix is appended
 
-### item -- ItemPrototype
+### item (ItemPrototype)
 
 The item used to place the electric tile. Mirrors a standard [ItemPrototype](https://lua-api.factorio.com/latest/prototypes/ItemPrototype.html).
 
@@ -131,7 +131,7 @@ The item used to place the electric tile. Mirrors a standard [ItemPrototype](htt
 - **order** -- a postfix is appended
 - **localised_name** -- a postfix is appended
 
-### recipe -- RecipePrototype
+### recipe (RecipePrototype)
 
 The crafting recipe for the electric tile. Mirrors a standard [RecipePrototype](https://lua-api.factorio.com/latest/prototypes/RecipePrototype.html).
 
@@ -150,7 +150,7 @@ The crafting recipe for the electric tile. Mirrors a standard [RecipePrototype](
 
 No other properties are modified.
 
-### others -- Adapter flags
+### others (Adapter Flags)
 
 Optional configuration that changes how the adapter processes an entry.
 
@@ -175,8 +175,6 @@ ElectricTilesDataInterface.modTilePrototypes({
     }
 })
 ```
-
-Note that the copper wire icon is disabled here because the space platform tile already has a distinctive appearance.
 
 ## Additional Notes
 
