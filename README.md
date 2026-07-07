@@ -181,4 +181,3 @@ ElectricTilesDataInterface.modTilePrototypes({
 - **You do not need pre-registered prototypes.** You can define tile, item, and recipe tables from scratch and pass them directly to **modTilePrototypes()**. The interface will handle prototype registration.
 - **Passing only a tile is valid.** Item and recipe data are optional. If omitted, the electric tile will exist in the game but will have no craftable item or recipe associated with it -- useful for programmatic placement or editor use.
 - **Load order matters.** Make sure Electric Tiles loads before your mod reads **ElectricTilesDataInterface**. The optional dependency declaration handles this automatically.
-
