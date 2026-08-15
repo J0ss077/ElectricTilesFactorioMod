@@ -204,5 +204,5 @@ table.insert(upgrade_to_ref_conc_recipe.icons, arrow_icon)
 
 data:extend({ upgrade_to_concrete_recipe, upgrade_to_ref_conc_recipe })
 
-table.insert(data.raw.technology["F077ET-technology"].effects, 2, { type = "unlock-recipe", recipe = upgrade_to_concrete_recipe.name })
+table.insert(data.raw.technology["F077ET-technology"].effects, 4, { type = "unlock-recipe", recipe = upgrade_to_concrete_recipe.name })
 table.insert(data.raw.technology["F077ET-technology"].effects, 5, { type = "unlock-recipe", recipe = upgrade_to_ref_conc_recipe.name })

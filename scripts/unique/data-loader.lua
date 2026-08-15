@@ -5,12 +5,12 @@ local temp_storage = require("scripts.var.temp-storage")
 local module = {}
 
 function module.load_startup_settings()
-    --
+    ----
     temp_storage.debug_mode = settings.startup["F077ET-debug-mode"].value
 end
 
 function module.load_runtime_settings()
-    --
+    -----
     local setting_001 = settings.global["F077ET-chunk-subdivision"].value
 
     if setting_001 == "x8" then
@@ -28,11 +28,11 @@ function module.load_runtime_settings()
 end
 
 function module.load_temp_data()
-    --
+    -----
     local carrier = prototypes.mod_data["F077ET-data-carrier"]
-
+    -----
     local dict_allowed_tiles = {}
-
+    -----
     local proxies_names = {}
 
     for range = 0.5, 16.0, 0.5 do

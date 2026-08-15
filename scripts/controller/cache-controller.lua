@@ -30,15 +30,15 @@ local function process_chunk(remove, mode, address, surface_name, chunk_position
 
     if remove then
         --
-        game_storage.get(mode .. "-caching-chunks")[chunk_subdivision][address] = nil
+        game_storage.get(mode.."-caching-chunks")[chunk_subdivision][address] = nil
         --
     else
         --
         local diff = mode == "base" and "long" or "base"
         --
-        if game_storage.get(diff .. "-caching-chunks")[chunk_subdivision][address] then return end
+        if game_storage.get(diff.."-caching-chunks")[chunk_subdivision][address] then return end
         --
-        game_storage.get(mode .. "-caching-chunks")[chunk_subdivision][address] = true
+           game_storage.get(mode.."-caching-chunks")[chunk_subdivision][address] = true
         --
     end
 end
