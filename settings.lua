@@ -8,11 +8,11 @@ data:extend({
         order = "a",
     },
     {
-        type = "string-setting",
+        type = "int-setting",
         name = "F077ET-base-update-delay",
         setting_type = "runtime-global",
-        default_value = "0.50 seconds",
-        allowed_values = { "0.50 seconds", "0.75 seconds", "1.00 seconds" },
+        default_value = 030,
+        minimum_value = 001,
         order = "b-a",
     },
     {
@@ -23,11 +23,11 @@ data:extend({
         order = "b-b",
     },
     {
-        type = "string-setting",
+        type = "int-setting",
         name = "F077ET-long-update-delay",
         setting_type = "runtime-global",
-        default_value = "2.50 seconds",
-        allowed_values = { "2.50 seconds", "5.00 seconds", "7.50 seconds" },
+        default_value = 150,
+        minimum_value = 001,
         order = "c-a",
     },
     {

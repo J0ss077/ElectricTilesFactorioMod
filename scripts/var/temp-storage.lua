@@ -1,4 +1,4 @@
-local indexs = { debug_mode = true, chunk_area_size = true, base_update_delay = true, long_update_delay = true, list_allowed_tiles = true, dict_allowed_tiles = true, proxies_names = true }
+local indexs = { debug_mode = true, chunk_area_size = true, list_allowed_tiles = true, dict_allowed_tiles = true, proxies_names = true }
 
 local values = {}
 

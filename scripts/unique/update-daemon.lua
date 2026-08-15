@@ -1,33 +1,19 @@
 local network_controller = require("scripts.controller.network-controller")
 
-local temp_storage = require("scripts.var.temp-storage")
-
 local daemon = {}
 
-local tbase_nth_tick = nil
+local current_base_tick = 0
+local current_long_tick = 0
 
-local tlong_nth_tick = nil
+function daemon.countdown_timers()
 
---- @param new_time? integer
----
-function daemon.reset_base_timer(new_time)
-    --
-    if tbase_nth_tick then script.on_nth_tick(tbase_nth_tick, nil) end
-    --
-    tbase_nth_tick = new_time or temp_storage.base_update_delay
-    --
-    script.on_nth_tick(tbase_nth_tick, network_controller.process_base_cached_chunks)
-end
+    current_base_tick = current_base_tick + 1
+    current_long_tick = current_long_tick + 1
 
---- @param new_time? integer
----
-function daemon.reset_long_timer(new_time)
+    if current_base_tick >= settings.global["F077ET-base-update-delay"].value then current_base_tick = 0; network_controller.process_base_cached_chunks() end
+    if current_long_tick >= settings.global["F077ET-long-update-delay"].value then current_long_tick = 0; network_controller.process_long_cached_chunks() end
     --
-    if tlong_nth_tick then script.on_nth_tick(tlong_nth_tick, nil) end
     --
-    tlong_nth_tick = new_time or temp_storage.long_update_delay
-    --
-    script.on_nth_tick(tlong_nth_tick, network_controller.process_long_cached_chunks)
 end
 
 return daemon

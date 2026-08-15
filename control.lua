@@ -6,15 +6,11 @@ require("scripts.unique.data-loader").load_runtime_settings()
 
 require("scripts.unique.data-loader").load_temp_data()
 
-local update_daemon = require("scripts.unique.update-daemon")
-
-update_daemon.reset_base_timer()
-
-update_daemon.reset_long_timer()
-
 require("scripts.handler.on_init")
 
 require("scripts.handler.on_load")
+
+require("scripts.handler.on_tick")
 
 require("scripts.handler.on_configuration_changed")
 
