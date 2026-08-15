@@ -63,7 +63,7 @@ local function process_cube(surface, chunk_world_area, cube)
 
             local close_proxies = surface.find_entities_filtered {
 
-                name = temp_storage.get("proxies-names"),
+                name = temp_storage.proxies_names,
 
                 area = {
 
@@ -139,7 +139,7 @@ local function process_cached_chunks(mode)
 
             for i0, proxy in ipairs(surface.find_entities_filtered {
                 --
-                name = temp_storage.get("proxies-names"), area = chunk_world_area
+                name = temp_storage.proxies_names, area = chunk_world_area
                 --
             }) do proxy.destroy() end
 
@@ -149,7 +149,7 @@ local function process_cached_chunks(mode)
 
             for i0, tile in ipairs(surface_utils.find_tiles_filtered(surface, {
                 --
-                name = temp_storage.get("list-allowed-tiles"), area = chunk_world_area
+                name = temp_storage.list_allowed_tiles, area = chunk_world_area
                 --
             }, true)) do
                 --
@@ -222,7 +222,7 @@ function module.update_electric_pole(entity)
     --
     local prototype = entity.prototype
 
-    for i0, proxy_name in ipairs(temp_storage.get("proxies-names")) do
+    for i0, proxy_name in ipairs(temp_storage.proxies_names) do
         --
         if prototype.name == proxy_name then return end
         --
@@ -245,11 +245,11 @@ function module.update_electric_pole(entity)
         },
     }
 
-    if surface_utils.count_tiles_filtered(entity.surface, { name = temp_storage.get("list-allowed-tiles"), area = esurface_area }, true) == 0 then return end
+    if surface_utils.count_tiles_filtered(entity.surface, { name = temp_storage.list_allowed_tiles, area = esurface_area }, true) == 0 then return end
 
     local close_proxies = entity.surface.find_entities_filtered {
 
-        name = temp_storage.get("proxies-names"),
+        name = temp_storage.proxies_names,
 
         area = {
 

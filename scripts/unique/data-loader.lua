@@ -6,7 +6,7 @@ local module = {}
 
 function module.load_startup_settings()
     --
-    temp_storage.set("debug-mode", settings.startup["F077ET-debug-mode"].value)
+    temp_storage.debug_mode = settings.startup["F077ET-debug-mode"].value
 end
 
 function module.load_runtime_settings()
@@ -15,45 +15,45 @@ function module.load_runtime_settings()
 
     if setting_001 == "x8" then
         --
-        temp_storage.set("chunk-area-size", 08)
+        temp_storage.chunk_area_size = 08
         --
     elseif setting_001 == "x16" then
         --
-        temp_storage.set("chunk-area-size", 16)
+        temp_storage.chunk_area_size = 16
         --
     elseif setting_001 == "x32" then
         --
-        temp_storage.set("chunk-area-size", 32)
+        temp_storage.chunk_area_size = 32
     end
 
     local setting_002 = settings.global["F077ET-base-update-delay"].value
 
     if setting_002 == "0.50 seconds" then
         --
-        temp_storage.set("base-update-delay", 30)
+        temp_storage.base_update_delay = 30
         --
     elseif setting_002 == "0.75 seconds" then
         --
-        temp_storage.set("base-update-delay", 45)
+        temp_storage.base_update_delay = 45
         --
     elseif setting_002 == "1.00 seconds" then
         --
-        temp_storage.set("base-update-delay", 60)
+        temp_storage.base_update_delay = 60
     end
 
     local setting_003 = settings.global["F077ET-long-update-delay"].value
 
     if setting_003 == "2.50 seconds" then
         --
-        temp_storage.set("long-update-delay", 150)
+        temp_storage.long_update_delay = 150
         --
     elseif setting_003 == "5.00 seconds" then
         --
-        temp_storage.set("long-update-delay", 300)
+        temp_storage.long_update_delay = 300
         --
     elseif setting_003 == "7.50 seconds" then
         --
-        temp_storage.set("long-update-delay", 450)
+        temp_storage.long_update_delay = 450
     end
 end
 
@@ -75,11 +75,11 @@ function module.load_temp_data()
         dict_allowed_tiles[name] = true
     end
 
-    temp_storage.set("list-allowed-tiles", carrier.data["list-allowed-tiles"])
+    temp_storage.list_allowed_tiles = carrier.data["list-allowed-tiles"]
 
-    temp_storage.set("dict-allowed-tiles", dict_allowed_tiles)
+    temp_storage.dict_allowed_tiles = dict_allowed_tiles
 
-    temp_storage.set("proxies-names", proxies_names)
+    temp_storage.proxies_names = proxies_names
 end
 
 return module

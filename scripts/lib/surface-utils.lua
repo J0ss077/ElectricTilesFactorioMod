@@ -93,7 +93,7 @@ end
 ---
 function module.recalculate_surface(surface)
     --
-    local chunk_size = temp_storage.get("chunk-area-size")
+    local chunk_size = temp_storage.chunk_area_size
 
     local chunk_part = 32 / chunk_size
 
@@ -120,7 +120,7 @@ function module.recalculate_surface(surface)
                         area_x[2] + chunk_size,
                     }
 
-                    local count = module.count_tiles_filtered(surface, { name = temp_storage.get("list-allowed-tiles"), area = { area_x, area_y }, limit = 1 }, true)
+                    local count = module.count_tiles_filtered(surface, { name = temp_storage.list_allowed_tiles, area = { area_x, area_y }, limit = 1 }, true)
 
                     if count > 0 then
                         --

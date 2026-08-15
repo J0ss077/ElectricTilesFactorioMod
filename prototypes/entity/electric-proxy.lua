@@ -139,7 +139,7 @@ local dbug = {
     },
 }
 
-if temp_storage.get("debug-mode") then
+if temp_storage.debug_mode then
     --
     common_utils.combine_dictionaries(base, dbug)
 end

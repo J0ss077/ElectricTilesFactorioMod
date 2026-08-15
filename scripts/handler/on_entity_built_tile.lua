@@ -10,11 +10,11 @@ local common_utils = require("scripts.lib.common-utils")
 ---
 local function process(event_data, mode)
     --
-    local cond01 = temp_storage.get("dict-allowed-tiles")[event_data.tile.name]
+    local cond01 = temp_storage.dict_allowed_tiles[event_data.tile.name]
 
     for i0, old_data in ipairs(event_data.tiles) do
         --
-        local cond02 = temp_storage.get("dict-allowed-tiles")[old_data.old_tile.name]
+        local cond02 = temp_storage.dict_allowed_tiles[old_data.old_tile.name]
 
         if (cond01 and not cond02) or (not cond01 and cond02) then
             --

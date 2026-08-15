@@ -12,7 +12,7 @@ local function process(event_data, mode)
     --
     for i0, old_data in ipairs(event_data.tiles) do
         --
-        if temp_storage.get("dict-allowed-tiles")[old_data.old_tile.name] then
+        if temp_storage.dict_allowed_tiles[old_data.old_tile.name] then
             --
             caching_controller.cache_chunk(
 

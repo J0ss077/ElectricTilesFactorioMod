@@ -13,7 +13,7 @@ script.on_event(defines.events.script_raised_destroy, function(event_data)
 
     local tile = surface.get_tile(position.x, position.y)
 
-    if tile and temp_storage.get("dict-allowed-tiles")[tile.name] then
+    if tile and temp_storage.dict_allowed_tiles[tile.name] then
         --
         caching_controller.cache_chunk("base", surface.name, common_utils.chunkPosition_from_tilePosition(position))
         --

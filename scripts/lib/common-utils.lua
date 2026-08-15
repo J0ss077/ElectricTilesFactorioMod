@@ -10,7 +10,7 @@ function module.debug_inGame(message, bypass)
     --
     bypass = bypass or false
 
-    if (temp_storage.get("debug-mode") or bypass) and game then
+    if (temp_storage.debug_mode or bypass) and game then
         --
         game.print("[electric-tiles]: " .. message)
     end
@@ -143,7 +143,7 @@ end
 ---
 function module.chunkPosition_from_tilePosition(tile_position, chunk_area_size)
     --
-    chunk_area_size = chunk_area_size or temp_storage.get("chunk-area-size")
+    chunk_area_size = chunk_area_size or temp_storage.chunk_area_size
 
     return {
         --

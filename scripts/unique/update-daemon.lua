@@ -14,7 +14,7 @@ function daemon.reset_base_timer(new_time)
     --
     if tbase_nth_tick then script.on_nth_tick(tbase_nth_tick, nil) end
     --
-    tbase_nth_tick = new_time or temp_storage.get("base-update-delay")
+    tbase_nth_tick = new_time or temp_storage.base_update_delay
     --
     script.on_nth_tick(tbase_nth_tick, network_controller.process_base_cached_chunks)
 end
@@ -25,7 +25,7 @@ function daemon.reset_long_timer(new_time)
     --
     if tlong_nth_tick then script.on_nth_tick(tlong_nth_tick, nil) end
     --
-    tlong_nth_tick = new_time or temp_storage.get("long-update-delay")
+    tlong_nth_tick = new_time or temp_storage.long_update_delay
     --
     script.on_nth_tick(tlong_nth_tick, network_controller.process_long_cached_chunks)
 end

@@ -1,23 +1,37 @@
-local module = {}
+local indexs = { debug_mode = true, chunk_area_size = true, base_update_delay = true, long_update_delay = true, list_allowed_tiles = true, dict_allowed_tiles = true, proxies_names = true }
 
-local memory = {}
+local values = {}
 
---- @param key string
----
---- @param value any
----
-function module.set(key, value)
-    --
-    memory[key] = value
-end
+local module = setmetatable({}, {
 
---- @param key string
----
---- @return any
----
-function module.get(key)
-    --
-    return memory[key]
-end
+    __index = function (_, key)
+        --
+        if indexs[key] then return values[key]
+        --
+        else
+            error("(custom error) key not found")
+        end
+    end,
+
+    __newindex = function (_, key, value)
+        --
+        if indexs[key] then values[key] = value
+        --
+        else
+            error("(custom error) setting new values is forbidden")
+        end
+    end,
+
+    __pairs = function ()
+        -----
+        local function loop(_, K)
+            -----
+            local KK = next(indexs, K)
+            --
+            if KK then return KK, values[KK] end
+            --
+        end return loop, nil, nil
+    end,
+})
 
 return module

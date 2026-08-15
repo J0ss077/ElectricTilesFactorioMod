@@ -2,7 +2,7 @@ local common_utils = require("scripts.lib.common-utils")
 
 local temp_storage = require("scripts.var.temp-storage")
 
-if not temp_storage.get("debug-mode") then return end
+if not temp_storage.debug_mode then return end
 
 local base = {
     --
