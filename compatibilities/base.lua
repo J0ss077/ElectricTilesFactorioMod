@@ -1,3 +1,5 @@
+if not settings.startup["F077ET-comp-base"].value then return end
+
 local definitions = require("scripts.var.definitions")
 
 local common_utils = require("scripts.lib.common-utils")

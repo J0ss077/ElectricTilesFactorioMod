@@ -1,4 +1,4 @@
-if not mods["space-age"] then return end
+if not settings.startup["F077ET-comp-space-age"].value or not mods["space-age"] then return end
 
 local definitions = require("scripts.var.definitions")
 

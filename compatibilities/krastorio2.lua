@@ -1,4 +1,4 @@
-if not mods["Krastorio2"] then return end
+if not settings.startup["F077ET-comp-krastorio2"].value or not mods["Krastorio2"] then return end
 
 local others = { use_default_recipe = true, technologies = { "kr-reinforced-plates" } }
 

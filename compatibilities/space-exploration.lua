@@ -1,4 +1,4 @@
-if not mods["space-exploration"] then return end
+if not settings.startup["F077ET-comp-space-exploration"].value or not mods["space-exploration"] then return end
 
 local _carrier = data.raw["mod-data"]["F077ET-data-carrier"]
 
