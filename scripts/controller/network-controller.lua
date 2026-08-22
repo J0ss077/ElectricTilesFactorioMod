@@ -200,7 +200,7 @@ local function process_cached_chunks(mode)
 
             count = count + 1
 
-            if count == settings.global["F077ET-" .. mode .. "-processing-amount"].value then return end
+            if count >= settings.global["F077ET-" .. mode .. "-processing-amount"].value then return end
 
             ::continue::
             --
